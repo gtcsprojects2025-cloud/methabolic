@@ -128,7 +128,7 @@ export default function Header() {
                 <p className="font-bold text-base">Upcoming Event Reminder</p>
                 <p className="text-sm opacity-90">Register now for the 1st African Metabolomics Conference 2026!</p>
                 <button
-                  onClick={() => window.open("https://www.metabolomicsafrica.org/conference2026", "_blank")}
+                  onClick={() => window.open("https://metabolomics-sa.co.za/metabolomics-africa-2026", "_blank")}
                   className="mt-2 px-4 py-2 bg-amber-300 text-purple-900 font-semibold rounded-full hover:bg-amber-400 transition"
                 >
                   Register Here
