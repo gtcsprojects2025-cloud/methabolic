@@ -94,7 +94,7 @@ export default function Home() {
                   Join us
                 </button>
                 </a>
-                <a href="ourgoal" className="">
+                <a href="ourGoals" className="">
                 <button className="border-2 border-purple-900 text-purple-900 px-6 py-3 rounded-full text-base font-medium hover:bg-purple-50 transition">
                   Our vision & mission
                 </button></a>
