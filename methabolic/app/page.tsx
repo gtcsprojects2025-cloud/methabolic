@@ -18,63 +18,54 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       {/* Hero Section with Video Background */}
-     <section className="relative h-screen flex items-end justify-start overflow-hidden">
-      {/* Background Video - Your local video */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        id="hero-video"
-        className="absolute inset-0 w-full h-full object-cover"
-      >
-        {/* Use the imported local video */}
-<source src="/hero-video.mp4" type="video/mp4" />
-        {/* Optional fallback message if video fails to load */}
-      </video>
+    <section className="relative h-screen flex items-end justify-start overflow-hidden">
+  {/* Background Image - using Tailwind bg utility */}
+  <div
+    className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+    style={{ backgroundImage: "url('gallery/onana2.jpg')" }}
+  />
 
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black opacity-70" />
+  {/* Dark Overlay for better text readability */}
+  <div className="absolute inset-0 bg-black opacity-20" />
 
-      {/* Pause/Play Button */}
-      <button
-        onClick={() => {
-          const vid = document.getElementById("hero-video") as HTMLVideoElement;
-          if (vid) {
-            vid.paused ? vid.play() : vid.pause();
-            setVideoPlaying(!vid.paused);
-          }
-        }}
-        className="absolute bottom-8 right-8 bg-white/20 p-2 rounded-full hover:bg-white/40 z-10 transition"
-      >
-        {videoPlaying ? <Pause className="text-white" size={20} /> : <Play className="text-white" size={20} />}
-      </button>
+  {/* Pause/Play Button - kept as-is (in case you add video later) */}
+  <button
+    onClick={() => {
+      const vid = document.getElementById("hero-video") as HTMLVideoElement;
+      if (vid) {
+        vid.paused ? vid.play() : vid.pause();
+        setVideoPlaying(!vid.paused);
+      }
+    }}
+    className="absolute bottom-8 right-8 bg-white/20 p-2 rounded-full hover:bg-white/40 z-10 transition"
+  >
+    {videoPlaying ? <Pause className="text-white" size={20} /> : <Play className="text-white" size={20} />}
+  </button>
 
-      {/* Hero Content - Bottom Left */}
-      <div className="relative z-10 px-6 pb-12 max-w-4xl">
-        <div className="bg-white/90 backdrop-blur-sm p-8 md:p-12 rounded-2xl">
-          <h1 className="text-3xl md:text-4xl font-bold text-purple-900 mb-4 leading-tight">
-            African biodiversity in motion
-          </h1>
-          <p className="text-base md:text-lg text-gray-800 mb-8 max-w-2xl">
-            Metabolomics Africa exists to power the interrogation of living biosignatures so communities can protect food systems, health, and climate futures.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <a href="ourGoals" className="">
-            <button className="border-2 border-purple-900 text-purple-900 px-6 py-3 rounded-full text-base font-medium hover:bg-purple-50 transition">
-              Meet our mission
-            </button>
-            </a>
-              {/* link button */}
-              <a href="https://www.metabolomics-sa.co.za/metabolomics-africa-2026" className="">
-            <button className="bg-purple-900 text-white px-6 py-3 rounded-full text-base font-medium hover:bg-purple-800 transition">
-              Attend the 1st Metabolomics Africa Conference in 2026
-            </button>
-            </a>
-          </div>
-        </div>
+  {/* Hero Content - Bottom Left */}
+  <div className="relative z-10 px-6 pb-12 max-w-4xl">
+    <div className="bg-white/90 backdrop-blur-sm p-8 md:p-12 rounded-2xl">
+      <h1 className="text-3xl md:text-4xl font-bold text-purple-900 mb-4 leading-tight">
+        African biodiversity in motion
+      </h1>
+      <p className="text-base md:text-lg text-gray-800 mb-8 max-w-2xl">
+        Metabolomics Africa exists to power the interrogation of living biosignatures so communities can protect food systems, health, and climate futures.
+      </p>
+      <div className="flex flex-col sm:flex-row gap-4">
+        <a href="/ourGoals">
+          <button className="border-2 border-purple-900 text-purple-900 px-6 py-3 rounded-full text-base font-medium hover:bg-purple-50 transition">
+            Meet our mission
+          </button>
+        </a>
+        <a href="https://www.metabolomics-sa.co.za/metabolomics-africa-2026" target="_blank" rel="noopener noreferrer">
+          <button className="bg-purple-900 text-white px-6 py-3 rounded-full text-base font-medium hover:bg-purple-800 transition">
+            Attend the 1st Metabolomics Africa Conference in 2026
+          </button>
+        </a>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
       {/* Pan-African Metabolomics Section */}
       <section className="py-16 bg-gray-50">
@@ -107,7 +98,7 @@ export default function Home() {
 
                  <div className="relative rounded-2xl overflow-hidden row-span-2 bg-white shadow-lg">
              <img
-            src="https://nationalmetabolomicsplatform.co.za/wp-content/uploads/2023/07/Pr_Analysis_BLOG_Sept2023_1693809530.jpg"
+            src="https://www.kibs.co.ke/wp/wp-content/uploads/2023/11/Outsource-Clinical-Trials.jpeg"
             alt="Pilot samples analysis in lab"
             className="w-full h-full object-cover absolute inset-0"
           />
@@ -128,7 +119,7 @@ export default function Home() {
                 <p className="text-base text-gray-800">Cohort graduation and certification in metabolomics training.</p>
               </div>
               <div className="bg-white rounded-2xl p-6 shadow-md">
-                <img src="https://www.kibs.co.ke/wp/wp-content/uploads/2023/11/Outsource-Clinical-Trials.jpeg" alt="African metabolomics lab scientists" className="w-full h-40 object-cover rounded-xl mb-3" />
+                <img src="https://nationalmetabolomicsplatform.co.za/wp-content/uploads/2023/07/Pr_Analysis_BLOG_Sept2023_1693809530.jpg" alt="African metabolomics lab scientists" className="w-full h-40 object-cover rounded-xl mb-3" />
                 <p className="text-base text-gray-800">Harmonizing data sharing standards across African countries.</p>
               </div>
             </div>
@@ -219,7 +210,7 @@ export default function Home() {
           <div className="space-y-20">
             {[
               { title: "Coordinated capacity", desc: "From mobile field labs to continental mentorship guilds, we connect African scientists with instrumentation, QA/QC, and governance practices to keep metabolomics programs community-owned.", img: "https://www.kibs.co.ke/wp/wp-content/uploads/2023/11/Outsource-Clinical-Trials.jpeg" },
-              { title: "Food and climate resilience", desc: "Soils, crops, and marine ecosystems across Africa demand metabolomics baselines so farmers and fisheries can respond to drought, pests, and climate shocks with evidence, not guesswork.", img: "https://news.mit.edu/sites/default/files/styles/news_article__image_gallery/public/images/201703/MIT-Maize-Drought_0.jpg?itok=JCX8nuYd" },
+              { title: "Food and climate resilience", desc: "Soils, crops, and marine ecosystems across Africa demand metabolomics baselines so farmers and fisheries can respond to drought, pests, and climate shocks with evidence, not guesswork.", img: "https://substackcdn.com/image/fetch/w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb08d91ee-1dc1-4403-9414-d07eb5dafe9c_715x429.jpeg" },
               { title: "Community diagnostics", desc: "We prototype translational metabolomics workflows that unlock accessible diagnostics, antimicrobial resistance surveillance, and public-health-ready data for ministries and clinics.", img: "https://static01.nyt.com/images/2019/04/16/science/00ULTRASOUND1/00ULTRASOUND1-articleLarge.jpg?quality=75&auto=webp&disable=upscale" },
             ].map((pillar, i) => (
               <div key={i} className={`grid grid-cols-1 md:grid-cols-2 gap-8 items-center ${i % 2 === 1 ? 'md:grid-flow-col-dense md:[&>div:nth-child(1)]:order-2' : ''}`}>
