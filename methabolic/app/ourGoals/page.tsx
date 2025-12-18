@@ -167,14 +167,14 @@ STEMxAfrica is turning vision into action through initiatives that combine educa
     <div className=" justify-between max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20">
     <div className=" ">
         <p className="text-purple-900 font-bold">Activation model</p>
-        <h1 className="text-2xl font-bold">STEMxAfrica Initiative</h1>
+        <h1 className="text-2xl font-bold text-black">STEMxAfrica Initiative</h1>
         <p className="text-black">A continent-wide pipeline that ignites interest in metabolomics and AI among young Africans via outreach campaigns, webinars, and on-site activations that build scientific literacy.</p>
         <a href="https://docs.google.com/document/d/1k3zbkqaeDF3PWvm3lA0V5WAZORFDf8LZzhj10Z75yQ0/edit?tab=t.0" className="inline-block mt-6  text-purple-900 font-medium rounded-full transition">Read more ↗</a>
        
     </div>
     <div className=" ">
         <p className="text-purple-900 font-bold">Clubs & continuity</p>
-        <h1 className="text-2xl font-bold">STEMxClubs</h1>
+        <h1 className="text-2xl font-bold text-black">STEMxClubs</h1>
 <p className="text-black">In-school clubs that sustain engagement after activations, guided by trained facilitators, flexible curricula, and real-world problem solving tied to health, climate, and food systems.</p>
       <a href="https://docs.google.com/document/d/1k3zbkqaeDF3PWvm3lA0V5WAZORFDf8LZzhj10Z75yQ0/edit?tab=t.0" className="inline-block mt-6  text-purple-900 font-medium rounded-full transition">Read more ↗</a>
        

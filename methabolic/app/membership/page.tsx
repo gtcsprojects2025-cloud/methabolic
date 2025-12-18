@@ -127,10 +127,10 @@ export default function MembershipPage() {
               <p className="text-purple-900 font-bold uppercase tracking-wider text-sm mb-6">
                 Metabolomics Africa (Experts)
               </p>
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 leading-tight">
+              <h2 className="text-2xl text-center md:text-left  md:text-3xl font-bold text-gray-900 mb-6 leading-tight">
                 Join us to position metabolomics on the African continent and mentor students who will be active members in the future.
               </h2>
-              <ul className="space-y-5 text-base text-gray-700">
+              <ul className="space-y-5  text-base text-gray-700">
                 <li className="flex items-start gap-3">
                   <span className="text-purple-900 mt-1">•</span>
                   <span>Invitation to shape the continental charter and governance blueprint.</span>
@@ -151,7 +151,8 @@ export default function MembershipPage() {
               <p className="text-purple-900 font-bold uppercase tracking-wider text-sm mb-6">
                 STEMxAfrica (Volunteers)
               </p>
-              <h2 className="text-2xl  md:text-3xl font-bold text-gray-900 mb-6 leading-tight">
+              {/* centralize formobile */}
+              <h2 className="text-2xl text-center md:text-left md:text-3xl font-bold text-gray-900 mb-6 leading-tight">
                 Non-experts, creatives, and operators join STEMxAfrica to contribute to the advancement of metabolomics on the African continent.
               </h2>
               <ul className="space-y-5 text-base text-gray-700">
@@ -196,7 +197,7 @@ export default function MembershipPage() {
                   value={interestForm.fullName}
                   onChange={handleInterestChange}
                   required
-                  className="w-full px-5 py-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-900"
+                  className="w-full text-black px-5 py-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-900"
                   placeholder="Your full name"
                 />
               </div>
@@ -210,7 +211,7 @@ export default function MembershipPage() {
                   value={interestForm.email}
                   onChange={handleInterestChange}
                   required
-                  className="w-full px-5 py-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-900"
+                  className="w-full text-black px-5 py-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-900"
                   placeholder="your.email@example.com"
                 />
               </div>
@@ -226,7 +227,7 @@ export default function MembershipPage() {
                   onChange={handleInterestChange}
                   required
                   rows={6}
-                  className="w-full px-5 py-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-900 resize-none"
+                  className="w-full text-black px-5 py-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-900 resize-none"
                   placeholder="Share your skills, interests, or how you'd like to get involved..."
                 />
               </div>
@@ -271,7 +272,7 @@ export default function MembershipPage() {
                   value={joinForm.name}
                   onChange={handleJoinChange}
                   required
-                  className="w-full px-5 py-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-900"
+                  className="w-full text-black px-5 py-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-900"
                 />
               </div>
 
@@ -284,7 +285,7 @@ export default function MembershipPage() {
                   value={joinForm.email}
                   onChange={handleJoinChange}
                   required
-                  className="w-full px-5 py-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-900"
+                  className="w-full text-black px-5 py-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-900"
                 />
               </div>
 
@@ -296,7 +297,7 @@ export default function MembershipPage() {
                   value={joinForm.message}
                   onChange={handleJoinChange}
                   rows={5}
-                  className="w-full px-5 py-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-900 resize-none"
+                  className="w-full text-black px-5 py-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-900 resize-none"
                   placeholder="Tell us about your background and interests..."
                 />
               </div>
