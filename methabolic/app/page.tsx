@@ -60,7 +60,7 @@ export default function Home() {
             Metabolomics Africa exists to power the interrogation of living biosignatures so communities can protect food systems, health, and climate futures.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <a href="ourgoal" className="">
+            <a href="ourGoals" className="">
             <button className="border-2 border-purple-900 text-purple-900 px-6 py-3 rounded-full text-base font-medium hover:bg-purple-50 transition">
               Meet our mission
             </button>

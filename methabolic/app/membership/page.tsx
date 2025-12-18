@@ -151,7 +151,7 @@ export default function MembershipPage() {
               <p className="text-purple-900 font-bold uppercase tracking-wider text-sm mb-6">
                 STEMxAfrica (Volunteers)
               </p>
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 leading-tight">
+              <h2 className="text-2xl  md:text-3xl font-bold text-gray-900 mb-6 leading-tight">
                 Non-experts, creatives, and operators join STEMxAfrica to contribute to the advancement of metabolomics on the African continent.
               </h2>
               <ul className="space-y-5 text-base text-gray-700">
