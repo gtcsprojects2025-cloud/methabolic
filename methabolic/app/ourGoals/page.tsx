@@ -6,7 +6,7 @@ export default function GoalsPage() {
   return (
     <>
       {/* Hero / Goals Introduction */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
+      <section className="py-16 md:py-24 mt-10">
         <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mt-10 mb-5">
              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mt-4">

@@ -108,7 +108,7 @@ export default function Header() {
             <ul className="px-6 py-8 space-y-5 text-center">
               <li><a href="/" className="block text-lg font-medium hover:text-purple-900" onClick={() => setMobileMenuOpen(false)}>Home</a></li>
               <li><a href="about" className="block text-lg font-medium hover:text-purple-900" onClick={() => setMobileMenuOpen(false)}>Overview</a></li>
-              <li><a href="ourgoal" className="block text-lg font-medium hover:text-purple-900" onClick={() => setMobileMenuOpen(false)}>Our Goals</a></li>
+              <li><a href="ourGoals" className="block text-lg font-medium hover:text-purple-900" onClick={() => setMobileMenuOpen(false)}>Our Goals</a></li>
               <li><a href="events" className="block text-lg font-medium hover:text-purple-900" onClick={() => setMobileMenuOpen(false)}>Events</a></li>
               <li><a href="gallery" className="block text-lg font-medium hover:text-purple-900" onClick={() => setMobileMenuOpen(false)}>Gallery</a></li>
               <li><a href="membership" className="block text-lg font-medium hover:text-purple-900" onClick={() => setMobileMenuOpen(false)}>Membership</a></li>

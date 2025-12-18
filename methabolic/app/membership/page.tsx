@@ -105,7 +105,7 @@ export default function MembershipPage() {
   return (
     <>
       {/* Small Hero Section with Background Image */}
-      <section className="relative h-96 md:h-[500px] flex items-center bg-cover bg-center" style={{ backgroundImage: "url('/Image 6.jpeg')" }}>
+      <section className="relative mt-10 h-96 md:h-[500px] flex items-center bg-cover bg-center" style={{ backgroundImage: "url('/Image 6.jpeg')" }}>
         <div className="absolute inset-0 bg-black opacity-70" />
         <div className="relative z-10  px-6 text-white items-center max-w-3xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Membership</h1>

@@ -5,7 +5,7 @@ export default function AboutPage() {
   return (
     <>
       {/* About Us Hero Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
+      <section className="py-16 mt-10 md:py-24 ">
         <div className="max-w-7xl mx-auto px-6">
           <div className="bg-white rounded-3xl shadow-xl p-10 md:p-16">
             <p className="text-purple-900 font-bold uppercase tracking-wider text-xs mb-4">
