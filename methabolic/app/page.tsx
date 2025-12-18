@@ -264,8 +264,8 @@ export default function Home() {
                 <p className="text-purple-900 font-semibold uppercase tracking-wider text-sm">Monthly • Virtual</p>
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKT5Iq8Ucxgojp9f23bQckR7Q6TgI0UmkSD2_kzWVeyxcuAg/viewform" className="">
                 <button className="mt-4 md:mt-0 border-2 border-amber-600 text-amber-700 px-6 py-3 rounded-full text-base font-medium hover:bg-amber-50 transition opacity-80">
-                  RSVP Link Coming Soon
-                </button>
+Register Here               
+ </button>
                 </a>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Metabolomics Africa Studio Hours</h3>
