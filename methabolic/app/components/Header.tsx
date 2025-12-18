@@ -109,10 +109,9 @@ export default function Header() {
               <li><a href="/" className="block text-lg font-medium hover:text-purple-900" onClick={() => setMobileMenuOpen(false)}>Home</a></li>
               <li><a href="about" className="block text-lg font-medium hover:text-purple-900" onClick={() => setMobileMenuOpen(false)}>Overview</a></li>
               <li><a href="ourgoal" className="block text-lg font-medium hover:text-purple-900" onClick={() => setMobileMenuOpen(false)}>Our Goals</a></li>
-              <li><a href="#events" className="block text-lg font-medium hover:text-purple-900" onClick={() => setMobileMenuOpen(false)}>Events</a></li>
-              <li><a href="#gallery" className="block text-lg font-medium hover:text-purple-900" onClick={() => setMobileMenuOpen(false)}>Gallery</a></li>
+              <li><a href="events" className="block text-lg font-medium hover:text-purple-900" onClick={() => setMobileMenuOpen(false)}>Events</a></li>
+              <li><a href="gallery" className="block text-lg font-medium hover:text-purple-900" onClick={() => setMobileMenuOpen(false)}>Gallery</a></li>
               <li><a href="membership" className="block text-lg font-medium hover:text-purple-900" onClick={() => setMobileMenuOpen(false)}>Membership</a></li>
-              <li><a href="#join" className="block text-lg font-medium hover:text-purple-900" onClick={() => setMobileMenuOpen(false)}>Join Us</a></li>
             </ul>
           </nav>
         )}
