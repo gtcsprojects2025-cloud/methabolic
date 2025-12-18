@@ -262,7 +262,7 @@ export default function Home() {
             <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition">
               <div className="flex flex-col md:flex-row justify-between items-start mb-6">
                 <p className="text-purple-900 font-semibold uppercase tracking-wider text-sm">Monthly • Virtual</p>
-                <a href="" className="">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKT5Iq8Ucxgojp9f23bQckR7Q6TgI0UmkSD2_kzWVeyxcuAg/viewform" className="">
                 <button className="mt-4 md:mt-0 border-2 border-amber-600 text-amber-700 px-6 py-3 rounded-full text-base font-medium hover:bg-amber-50 transition opacity-80">
                   RSVP Link Coming Soon
                 </button>
