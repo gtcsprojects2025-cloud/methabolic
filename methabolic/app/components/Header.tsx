@@ -106,11 +106,32 @@ export default function Header() {
                   </button>
                   {openDropdown === "content" && (
                     <ul className="absolute left-0 top-full mt-2 w-48 bg-white border-2 border-purple-900 rounded-2xl shadow-xl py-3">
+
                       <li><a href="/events" className="block px-6 py-2 text-base hover:bg-purple-600">Events</a></li>
                       <li><a href="/gallery" className="block px-6 py-2 text-base hover:bg-purple-600">Gallery</a></li>
                     </ul>
                   )}
                 </li>
+
+                 <li className="relative">
+                  <button
+                    onClick={() => toggleDropdown("project")}
+                    className="flex items-center gap-1 px-4 py-2 text-base font-bold hover:text-purple-900 transition"
+                  >
+                    Projects
+                    <ChevronDown
+                      size={16}
+                      className={`transition-transform ${openDropdown === "content" ? "rotate-180" : ""}`}
+                    />
+                  </button>
+                  {openDropdown === "project" && (
+                    <ul className="absolute left-0 top-full mt-2 w-48 bg-white border-2 border-purple-900 rounded-2xl shadow-xl py-3">
+
+                      <li><a href="/project" className="block px-6 py-2 text-base hover:bg-purple-600">STEMxAfrica</a></li>
+                    </ul>
+                  )}
+                </li>
+
 
                 {/* Membership */}
                 <li>
@@ -130,11 +151,29 @@ export default function Header() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <nav ref={mobileMenuRef} className="lg:hidden bg-white border-t border-purple-200 shadow-lg">
-            <ul className="px-6 py-8 space-y-5 text-center">
+          <nav ref={mobileMenuRef} className="lg:hidden  bg-white border-t border-purple-200 shadow-lg">
+            <ul className="px-6 py-8 space-y-5 text-left">
               <li><a href="/" className="block text-lg font-medium hover:text-purple-900" onClick={() => setMobileMenuOpen(false)}>Home</a></li>
               <li><a href="/about" className="block text-lg font-medium hover:text-purple-900" onClick={() => setMobileMenuOpen(false)}>Overview</a></li>
               <li><a href="/ourGoals" className="block text-lg font-medium hover:text-purple-900" onClick={() => setMobileMenuOpen(false)}>Our Goals</a></li>
+              <li className="relative ">
+                  <button
+                    onClick={() => toggleDropdown("project")}
+                    className="flex items-center gap-1  py-2 text-lg font-bold hover:text-purple-900 transition"
+                  >
+                    Projects
+                    <ChevronDown
+                      size={16}
+                      className={`transition-transform ${openDropdown === "content" ? "rotate-180" : ""}`}
+                    />
+                  </button>
+                  {openDropdown === "project" && (
+                    <ul className="absolute left-0 top-full mt-2 w-48 bg-white border-2 border-purple-900 rounded-2xl shadow-xl py-3">
+
+                      <li><a href="/project" className="block px-6 py-2 text-base hover:bg-purple-600">STEMxAfrica</a></li>
+                    </ul>
+                  )}
+                </li>            
               <li><a href="/events" className="block text-lg font-medium hover:text-purple-900" onClick={() => setMobileMenuOpen(false)}>Events</a></li>
               <li><a href="/gallery" className="block text-lg font-medium hover:text-purple-900" onClick={() => setMobileMenuOpen(false)}>Gallery</a></li>
               <li><a href="/membership" className="block text-lg font-medium hover:text-purple-900" onClick={() => setMobileMenuOpen(false)}>Membership</a></li>

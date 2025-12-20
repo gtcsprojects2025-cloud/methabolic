@@ -149,37 +149,7 @@ export default function GoalsPage() {
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="bg-white  shadow-xl  ">
-        <div className="max-w-7xl mx-auto px-6">
-            <div className="bg-white rounded-3xl shadow-xl p-10 md:p-16">
-         <p className="text-purple-900 font-bold uppercase tracking-wider text-xs mb-4">
-              STEMxAfrica
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-Our Projects            </h2>
-            <p className="text-base md:text-md text-gray-700 mb-10">
-STEMxAfrica is turning vision into action through initiatives that combine education, research infrastructure, and global collaboration. These initiatives inspire the next generation of African scientists and position Africa as a leader in metabolomics.            </p>
-    </div> </div>
-     </section>
-
-<section className="py-16 bg-white">
-    <div className=" justify-between max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20">
-    <div className=" ">
-        <p className="text-purple-900 font-bold">Activation model</p>
-        <h1 className="text-2xl font-bold text-black">STEMxAfrica Initiative</h1>
-        <p className="text-black">A continent-wide pipeline that ignites interest in metabolomics and AI among young Africans via outreach campaigns, webinars, and on-site activations that build scientific literacy.</p>
-        <a href="https://docs.google.com/document/d/1k3zbkqaeDF3PWvm3lA0V5WAZORFDf8LZzhj10Z75yQ0/edit?tab=t.0" className="inline-block mt-6  text-purple-900 font-medium rounded-full transition">Read more ↗</a>
-       
-    </div>
-    <div className=" ">
-        <p className="text-purple-900 font-bold">Clubs & continuity</p>
-        <h1 className="text-2xl font-bold text-black">STEMxClubs</h1>
-<p className="text-black">In-school clubs that sustain engagement after activations, guided by trained facilitators, flexible curricula, and real-world problem solving tied to health, climate, and food systems.</p>
-      <a href="https://docs.google.com/document/d/1k3zbkqaeDF3PWvm3lA0V5WAZORFDf8LZzhj10Z75yQ0/edit?tab=t.0" className="inline-block mt-6  text-purple-900 font-medium rounded-full transition">Read more ↗</a>
-       
-    </div></div>
-</section>
+    
 
 
 

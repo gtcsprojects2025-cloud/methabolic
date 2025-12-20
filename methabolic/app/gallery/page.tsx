@@ -33,6 +33,20 @@ export default function GalleryPage() {
     "p5.jpg",
     "Image 16.mp4",
     "IMG_5232.mp4",
+    "Image 7.jpg",
+    "Image 8.jpg",
+    "Image 9.jpg",
+    "vi.mp4",
+    "imagevid.mp4",
+    "vid2.mp4",
+    "vid3.mp4",
+        "vid4.mp4",
+    "vid5.mp4",
+    "vid6.mp4",
+
+
+
+
   ];
 
   const spanPatterns = [
