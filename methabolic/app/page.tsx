@@ -54,7 +54,7 @@ export default function Home() {
   <div className="relative z-10 px-6 pb-12 max-w-4xl">
     <div className="bg-white/90 backdrop-blur-sm p-8 md:p-12 rounded-2xl">
       <h1 className="text-3xl md:text-4xl font-bold text-purple-900 mb-4 leading-tight">
-        African biodiversity in motion
+        African Biodiversity In Motion
       </h1>
       <p className="text-base md:text-lg text-gray-800 mb-8 max-w-2xl">
         Metabolomics Africa exists to power the interrogation of living biosignatures so communities can protect food systems, health, and climate futures.
@@ -82,7 +82,7 @@ export default function Home() {
             <div className="md:col-span-1">
               <p className="text-purple-900 font-bold uppercase tracking-wider text-xs mb-3">Pan-African Metabolomics</p>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
-                Building Africa’s metabolomics network together
+                Building Africa’s Metabolomics Network Together
               </h2>
               <p className="text-base text-gray-700 mb-8">
                 Metabolomics Africa is an early-stage collective aligning experts, students, and partners to grow metabolomics capacity, mentorship, and pilot projects that address health, agriculture, and climate priorities across the continent.
@@ -158,7 +158,7 @@ export default function Home() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <p className="text-purple-900 font-bold uppercase tracking-wider text-xs mb-3">Training architecture</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-purple-900 mb-4">Empowering Africa’s next generation</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-purple-900 mb-4">Empowering Africa’s Next Generation</h2>
           <p className="text-base text-gray-700 mb-10">From school clubs to global scientists.</p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -208,7 +208,7 @@ export default function Home() {
           <div className="text-left mb-12">
             <p className="text-purple-900 font-bold uppercase tracking-wider text-xs mb-3">Foundational Pillars</p>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Our foundational pillars: Solving Africa’s grand challenges
+              Our Foundational Pillars: Solving Africa’s Grand Challenges
             </h2>
             <p className="text-base text-gray-700 max-w-3xl">
               These are the long-term arenas where metabolomics, paired with African governance and mentorship, shifts systems for millions of people.
@@ -217,9 +217,9 @@ export default function Home() {
 
           <div className="space-y-20">
             {[
-              { title: "Coordinated capacity", desc: "From mobile field labs to continental mentorship guilds, we connect African scientists with instrumentation, QA/QC, and governance practices to keep metabolomics programs community-owned.", img: "gallery/lab.jpg" },
-              { title: "Food and climate resilience", desc: "Soils, crops, and marine ecosystems across Africa demand metabolomics baselines so farmers and fisheries can respond to drought, pests, and climate shocks with evidence, not guesswork.", img: "gallery/fc.jpg" },
-              { title: "Community diagnostics", desc: "We prototype translational metabolomics workflows that unlock accessible diagnostics, antimicrobial resistance surveillance, and public-health-ready data for ministries and clinics.", img: "cd.png" },
+              { title: "Coordinated Capacity", desc: "From mobile field labs to continental mentorship guilds, we connect African scientists with instrumentation, QA/QC, and governance practices to keep metabolomics programs community-owned.", img: "gallery/lab.jpg" },
+              { title: "Food and Climate Resilience", desc: "Soils, crops, and marine ecosystems across Africa demand metabolomics baselines so farmers and fisheries can respond to drought, pests, and climate shocks with evidence, not guesswork.", img: "gallery/fc.jpg" },
+              { title: "Community Diagnostics", desc: "We prototype translational metabolomics workflows that unlock accessible diagnostics, antimicrobial resistance surveillance, and public-health-ready data for ministries and clinics.", img: "cd.png" },
             ].map((pillar, i) => (
               <div key={i} className={`grid grid-cols-1 md:grid-cols-2 gap-8 items-center ${i % 2 === 1 ? 'md:grid-flow-col-dense md:[&>div:nth-child(1)]:order-2' : ''}`}>
                 <div>
@@ -237,7 +237,7 @@ export default function Home() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6">
           <p className="text-purple-900 font-bold uppercase tracking-wider text-xs mb-3">Field Notes & Convenings</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Upcoming observatory moments</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Upcoming Observatory Moments</h2>
           <p className="text-base text-gray-700 mb-10 max-w-3xl">
             Every gathering or studio hour unlocks new collaborators and pathways. Here is where we are convening next.
           </p>
