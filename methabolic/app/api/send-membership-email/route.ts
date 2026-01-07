@@ -69,10 +69,10 @@ export async function POST(request: Request) {
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: 'metabolomicsafrica@gmail.com', 
-      subject: `New Contact Form Submission from SmartEnv Website: ${fullName}`,
+      subject: `New Contact Form Submission from Metabolimics Website: ${fullName}`,
       html: `
         <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
-            <h2 style="color: #10B981;">New SmartEnv Inquiry</h2>
+            <h2 style="color: #10B981;">New Metabolimics Inquiry</h2>
             <p><strong>Name:</strong> ${fullName}</p>
             <p><strong>Email:</strong> ${email}</p>
             <p><strong>Message:</strong></p>
@@ -80,7 +80,7 @@ export async function POST(request: Request) {
                ${contribution}
             </div>
             <p style="margin-top: 20px; font-size: 0.9em; color: #666;">
-                This message was sent from the SmartEnv Contact Page.
+                This message was sent from the Metabolimics Contact Page.
             </p>
         </div>
       `,
