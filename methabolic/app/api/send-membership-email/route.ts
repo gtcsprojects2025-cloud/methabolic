@@ -45,6 +45,7 @@
 
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import sendWelcomeEmail from '../../membership/confirmationemail';
 
 // Configure the Nodemailer transporter using your secure environment variables
 const transporter = nodemailer.createTransport({
@@ -88,6 +89,7 @@ export async function POST(request: Request) {
 
     // Send the email
     await transporter.sendMail(mailOptions);
+    await sendWelcomeEmail(email, fullName);
 
     // Success response
     return NextResponse.json({ message: 'Email sent successfully!' }, { status: 200 });
