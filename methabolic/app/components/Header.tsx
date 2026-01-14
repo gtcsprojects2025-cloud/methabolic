@@ -198,6 +198,7 @@ const toggleDropdown = (name: string) => {
                 Gallery
               </a>
             </li>
+           
           </ul>
         )}
       </li>
@@ -216,6 +217,13 @@ const toggleDropdown = (name: string) => {
                     Membership
                   </a>
                 </li>
+                 <li>
+              <a
+                href="/blog"
+className="px-4 py-2 text-base font-bold hover:text-purple-900 transition"              >
+                Blog
+              </a>
+            </li>
               </ul>
             </div>
           </nav>
@@ -297,6 +305,7 @@ const toggleDropdown = (name: string) => {
                 Gallery
               </a>
             </li>
+           
           </ul>
         )}
       </li>
@@ -305,6 +314,14 @@ const toggleDropdown = (name: string) => {
 </li>           
             
               <li><a href="/membership" className="block text-lg font-medium hover:text-purple-900" onClick={() => setMobileMenuOpen(false)}>Membership</a></li>
+            <li>
+              <a
+                href="/blog"  
+                className="block text-lg font-medium hover:text-purple-900"
+              >
+                Blog
+              </a>
+            </li>
             </ul>
           </nav>
         )}
