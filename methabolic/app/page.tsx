@@ -36,7 +36,7 @@ export default function Home() {
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black opacity-70" />
 
-      {/* Pause/Play Button */}
+   {/* Pause/Play Button */}
       <button
         onClick={() => {
           const vid = document.getElementById("hero-video") as HTMLVideoElement;
@@ -50,31 +50,30 @@ export default function Home() {
         {videoPlaying ? <Pause className="text-white" size={20} /> : <Play className="text-white" size={20} />}
       </button>
 
-      {/* Hero Content - Bottom Left */}
-      <div className="relative z-10 px-6 pb-12 max-w-4xl">
-        <div className="bg-white/90 backdrop-blur-sm p-8 md:p-12 rounded-2xl">
-          <h1 className="text-3xl md:text-4xl font-bold text-purple-900 mb-4 leading-tight">
-            African biodiversity in motion
-          </h1>
-          <p className="text-base md:text-lg text-gray-800 mb-8 max-w-2xl">
-            Metabolomics Africa exists to power the interrogation of living biosignatures so communities can protect food systems, health, and climate futures.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <a href="ourgoal" className="">
-            <button className="border-2 border-purple-900 text-purple-900 px-6 py-3 rounded-full text-base font-medium hover:bg-purple-50 transition">
-              Meet our mission
-            </button>
-            </a>
-              {/* link button */}
-              <a href="https://www.metabolomics-sa.co.za/metabolomics-africa-2026" className="">
-            <button className="bg-purple-900 text-white px-6 py-3 rounded-full text-base font-medium hover:bg-purple-800 transition">
-              Attend the 1st Metabolomics Africa Conference in 2026
-            </button>
-            </a>
-          </div>
-        </div>
+  {/* Hero Content - Bottom Left */}
+  <div className="relative z-10 px-6 pb-12 max-w-4xl">
+    <div className="bg-white/90 backdrop-blur-sm p-8 md:p-12 rounded-2xl">
+      <h1 className="text-3xl md:text-4xl font-bold text-purple-900 mb-4 leading-tight">
+        African Biodiversity In Motion
+      </h1>
+      <p className="text-base md:text-lg text-gray-800 mb-8 max-w-2xl">
+        Metabolomics Africa exists to power the interrogation of living biosignatures so communities can protect food systems, health, and climate futures.
+      </p>
+      <div className="flex flex-col sm:flex-row gap-4">
+        <a href="/ourGoals">
+          <button className="border-2 border-purple-900 text-purple-900 px-6 py-3 rounded-full text-base font-medium hover:bg-purple-50 transition">
+            View our mission
+          </button>
+        </a>
+        <a href="https://www.metabolomics-sa.co.za/metabolomics-africa-2026" target="_blank" rel="noopener noreferrer">
+          <button className="bg-purple-900 text-white px-6 py-3 rounded-full text-base font-medium hover:bg-purple-800 transition">
+            Attend the 1st Metabolomics Africa Conference in 2026
+          </button>
+        </a>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
       {/* Pan-African Metabolomics Section */}
       <section className="py-16 bg-gray-50">
@@ -83,7 +82,7 @@ export default function Home() {
             <div className="md:col-span-1">
               <p className="text-purple-900 font-bold uppercase tracking-wider text-xs mb-3">Pan-African Metabolomics</p>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
-                Building Africa’s metabolomics network together
+                Building Africa’s Metabolomics Network Together
               </h2>
               <p className="text-base text-gray-700 mb-8">
                 Metabolomics Africa is an early-stage collective aligning experts, students, and partners to grow metabolomics capacity, mentorship, and pilot projects that address health, agriculture, and climate priorities across the continent.
@@ -94,7 +93,7 @@ export default function Home() {
                   Join us
                 </button>
                 </a>
-                <a href="ourgoal" className="">
+                <a href="ourGoals" className="">
                 <button className="border-2 border-purple-900 text-purple-900 px-6 py-3 rounded-full text-base font-medium hover:bg-purple-50 transition">
                   Our vision & mission
                 </button></a>
@@ -107,9 +106,9 @@ export default function Home() {
 
                  <div className="relative rounded-2xl overflow-hidden row-span-2 bg-white shadow-lg">
              <img
-            src="https://nationalmetabolomicsplatform.co.za/wp-content/uploads/2023/07/Pr_Analysis_BLOG_Sept2023_1693809530.jpg"
+            src="gallery/mt.jpeg"
             alt="Pilot samples analysis in lab"
-            className="w-full h-full object-cover absolute inset-0"
+            className="w-full h-full opacity-50 object-cover absolute inset-0"
           />
           <div className="absolute inset-0 bg-black/60 to-transparent" />
           <div className="relative p-8 text-white flex flex-col justify-end h-full">
@@ -124,11 +123,11 @@ export default function Home() {
         </div>
             
               <div className="bg-white rounded-2xl p-6 shadow-md">
-                <img src="https://substackcdn.com/image/fetch/w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb08d91ee-1dc1-4403-9414-d07eb5dafe9c_715x429.jpeg" alt="Training graduation" className="w-full h-40 object-cover rounded-xl mb-3" />
+                <img src="gallery/onana1.jpg" alt="Training graduation" className="w-full h-40 object-cover rounded-xl mb-3" />
                 <p className="text-base text-gray-800">Cohort graduation and certification in metabolomics training.</p>
               </div>
               <div className="bg-white rounded-2xl p-6 shadow-md">
-                <img src="https://www.kibs.co.ke/wp/wp-content/uploads/2023/11/Outsource-Clinical-Trials.jpeg" alt="African metabolomics lab scientists" className="w-full h-40 object-cover rounded-xl mb-3" />
+                <img src="https://nationalmetabolomicsplatform.co.za/wp-content/uploads/2023/07/Pr_Analysis_BLOG_Sept2023_1693809530.jpg" alt="African metabolomics lab scientists" className="w-full h-40 object-cover rounded-xl mb-3" />
                 <p className="text-base text-gray-800">Harmonizing data sharing standards across African countries.</p>
               </div>
             </div>
@@ -159,7 +158,7 @@ export default function Home() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <p className="text-purple-900 font-bold uppercase tracking-wider text-xs mb-3">Training architecture</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-purple-900 mb-4">Empowering Africa’s next generation</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-purple-900 mb-4">Empowering Africa’s Next Generation</h2>
           <p className="text-base text-gray-700 mb-10">From school clubs to global scientists.</p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -209,7 +208,7 @@ export default function Home() {
           <div className="text-left mb-12">
             <p className="text-purple-900 font-bold uppercase tracking-wider text-xs mb-3">Foundational Pillars</p>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Our foundational pillars: Solving Africa’s grand challenges
+              Our Foundational Pillars: Solving Africa’s Grand Challenges
             </h2>
             <p className="text-base text-gray-700 max-w-3xl">
               These are the long-term arenas where metabolomics, paired with African governance and mentorship, shifts systems for millions of people.
@@ -218,9 +217,9 @@ export default function Home() {
 
           <div className="space-y-20">
             {[
-              { title: "Coordinated capacity", desc: "From mobile field labs to continental mentorship guilds, we connect African scientists with instrumentation, QA/QC, and governance practices to keep metabolomics programs community-owned.", img: "https://www.kibs.co.ke/wp/wp-content/uploads/2023/11/Outsource-Clinical-Trials.jpeg" },
-              { title: "Food and climate resilience", desc: "Soils, crops, and marine ecosystems across Africa demand metabolomics baselines so farmers and fisheries can respond to drought, pests, and climate shocks with evidence, not guesswork.", img: "https://news.mit.edu/sites/default/files/styles/news_article__image_gallery/public/images/201703/MIT-Maize-Drought_0.jpg?itok=JCX8nuYd" },
-              { title: "Community diagnostics", desc: "We prototype translational metabolomics workflows that unlock accessible diagnostics, antimicrobial resistance surveillance, and public-health-ready data for ministries and clinics.", img: "https://static01.nyt.com/images/2019/04/16/science/00ULTRASOUND1/00ULTRASOUND1-articleLarge.jpg?quality=75&auto=webp&disable=upscale" },
+              { title: "Coordinated Capacity", desc: "From mobile field labs to continental mentorship guilds, we connect African scientists with instrumentation, QA/QC, and governance practices to keep metabolomics programs community-owned.", img: "gallery/lab.jpg" },
+              { title: "Food and Climate Resilience", desc: "Soils, crops, and marine ecosystems across Africa demand metabolomics baselines so farmers and fisheries can respond to drought, pests, and climate shocks with evidence, not guesswork.", img: "gallery/fc.jpg" },
+              { title: "Community Diagnostics", desc: "We prototype translational metabolomics workflows that unlock accessible diagnostics, antimicrobial resistance surveillance, and public-health-ready data for ministries and clinics.", img: "cd.png" },
             ].map((pillar, i) => (
               <div key={i} className={`grid grid-cols-1 md:grid-cols-2 gap-8 items-center ${i % 2 === 1 ? 'md:grid-flow-col-dense md:[&>div:nth-child(1)]:order-2' : ''}`}>
                 <div>
@@ -238,7 +237,7 @@ export default function Home() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6">
           <p className="text-purple-900 font-bold uppercase tracking-wider text-xs mb-3">Field Notes & Convenings</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Upcoming observatory moments</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Upcoming Observatory Moments</h2>
           <p className="text-base text-gray-700 mb-10 max-w-3xl">
             Every gathering or studio hour unlocks new collaborators and pathways. Here is where we are convening next.
           </p>
@@ -262,10 +261,10 @@ export default function Home() {
             <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition">
               <div className="flex flex-col md:flex-row justify-between items-start mb-6">
                 <p className="text-purple-900 font-semibold uppercase tracking-wider text-sm">Monthly • Virtual</p>
-                <a href="" className="">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKT5Iq8Ucxgojp9f23bQckR7Q6TgI0UmkSD2_kzWVeyxcuAg/viewform" className="">
                 <button className="mt-4 md:mt-0 border-2 border-amber-600 text-amber-700 px-6 py-3 rounded-full text-base font-medium hover:bg-amber-50 transition opacity-80">
-                  RSVP Link Coming Soon
-                </button>
+Register Here               
+ </button>
                 </a>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Metabolomics Africa Studio Hours</h3>

@@ -5,7 +5,7 @@ export default function AboutPage() {
   return (
     <>
       {/* About Us Hero Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
+      <section className="py-16 mt-10 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="bg-white rounded-3xl shadow-xl p-10 md:p-16">
             <p className="text-purple-900 font-bold uppercase tracking-wider text-xs mb-4">
@@ -50,7 +50,7 @@ export default function AboutPage() {
             {/* Capacity & Mentorship */}
             <div className="bg-white rounded-3xl shadow-lg p-10">
               <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                Capacity & mentorship
+                Capacity & Mentorship
               </h3>
               <p className="text-base text-gray-700">
                 Fellows shadow experts, access instrumentation, and gain governance skills to run metabolomics platforms responsibly.
@@ -60,7 +60,7 @@ export default function AboutPage() {
             {/* Continental Collaboration */}
             <div className="bg-white rounded-3xl shadow-lg p-10">
               <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                Continental collaboration
+                Continental Collaboration
               </h3>
               <p className="text-base text-gray-700">
                 We encourage collaboration across the continent, ensuring an ecosystem where all stakeholders in metabolomics are able to compare notes.
@@ -70,7 +70,7 @@ export default function AboutPage() {
             {/* Applied Impact */}
             <div className="bg-white rounded-3xl shadow-lg p-10">
               <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                Applied impact
+                Applied Impact
               </h3>
               <p className="text-base text-gray-700">
                 Our pilots target African priorities: food security, antimicrobial resistance, climate resilience, and equitable public health.
