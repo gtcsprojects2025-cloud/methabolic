@@ -8,7 +8,10 @@ import Footer from "./components/Footer";
 
 export const metadata: Metadata = {
   title: "Metabolomics",
-  description: "Accelerating Africa through metabolomics",};
+  description: "Accelerating Africa through metabolomics",
+  icons: { icon: "/favicon.png"}, // references app/favicon.png },
+
+};
 
 export default function RootLayout({
   children,

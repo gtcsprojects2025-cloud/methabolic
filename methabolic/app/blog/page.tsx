@@ -13,9 +13,9 @@ const MOCK_POSTS = [
 These disciplines are reshaping medicine, agriculture, biotechnology, and environmental sustainability globally. Yet Africa, with its unparalleled genetic and ecological diversity, remains underrepresented in these frontier fields.
 
 This imbalance is not due to a lack of potential, but a lack of access.`,
-    author: "Julius Edicha",
+    author: "Layo Obidike",
     authorRole: "",
-    authorImage: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
+    authorImage: "/lo.png",
     date: "2026-01-20",
     category: "Metabolomics",
     tags: ["Africa", "Omics", "Genomics", "Proteomics", "Metabolomics", "Phenomics", "Science Leadership"],
@@ -27,7 +27,7 @@ This imbalance is not due to a lack of potential, but a lack of access.`,
     excerpt: `The greatest discoveries: from decoding DNA to mapping the human microbiome, were made possible not by isolated minds but by networks of shared knowledge, tools, and vision.`,
     author: "Layo Obidike",
     authorRole: "",
-    authorImage: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
+    authorImage: "/lo.png",
     date: "2025-04-28",
     category: "Design",
     tags: ["Africa", "Omics", "Genomics", "Proteomics", "Metabolomics", "Phenomics",],
@@ -153,7 +153,7 @@ const Archive = () => {
                   <div className="flex flex-col items-end gap-2 text-slate-400">
                     <span className="text-xs font-medium whitespace-nowrap">{post.readingTime}</span>
                     <div className="p-3 rounded-full bg-slate-50 border border-slate-100 group-hover:bg-indigo-50 group-hover:border-indigo-100 group-hover:text-indigo-600 transition-all">
-                      <ArrowRight className="w-5 h-5" />
+                     <Link href={`/blog/${post.id}`}> <ArrowRight className="w-5 h-5" /></Link>
                     </div>
                   </div>
                 </div>
@@ -179,48 +179,7 @@ const Archive = () => {
         )}
       </main>
 
-      <footer className="bg-slate-900 text-slate-400 py-20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="grid md:grid-cols-4 gap-12 mb-12">
-            <div className="col-span-2">
-              <div className="flex items-center gap-2 font-bold text-xl text-white mb-6">
-                <Hash className="w-6 h-6 text-indigo-500" />
-                <span>DevArchive</span>
-              </div>
-              <p className="max-w-sm mb-6">
-                The leading source for modern web development insights. Curated weekly by the community for the community.
-              </p>
-              <div className="flex gap-4">
-                <Twitter className="w-5 h-5 cursor-pointer hover:text-white transition-colors" />
-                <Github className="w-5 h-5 cursor-pointer hover:text-white transition-colors" />
-              </div>
-            </div>
-            <div>
-              <h4 className="text-white font-bold mb-6">Resources</h4>
-              <ul className="space-y-4 text-sm">
-                <li><a href="#" className="hover:text-white transition-colors">Documentation</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">API Reference</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Style Guide</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white font-bold mb-6">Newsletter</h4>
-              <p className="text-sm mb-4">Stay updated with the latest releases.</p>
-              <div className="flex gap-2">
-                <input type="email" placeholder="Email" className="bg-slate-800 border-0 rounded-lg px-3 py-2 text-sm w-full focus:ring-2 focus:ring-indigo-500" />
-                <button className="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-bold">Join</button>
-              </div>
-            </div>
-          </div>
-          <div className="pt-8 border-t border-slate-800 text-xs flex flex-col md:flex-row justify-between gap-4">
-            <p>© 2025 DevArchive. All rights reserved.</p>
-            <div className="flex gap-6">
-              <a href="#">Privacy Policy</a>
-              <a href="#">Terms of Service</a>
-            </div>
-          </div>
-        </div>
-      </footer>
+
     </div>
   );
 };
