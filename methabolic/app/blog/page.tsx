@@ -8,6 +8,7 @@ const MOCK_POSTS = [
   {
     id: 1,
     title: "Why Africa Must Lead in Omics Sciences",
+    permlink:"Why_Africa_Must_Lead_in_Omics_Sciences",
     excerpt: `Africa stands at a decisive moment in its scientific history. With over 1.4 billion people, immense biodiversity, and the fastest-growing youth population in the world, the continent is uniquely positioned to lead a new era of discovery through omics sciences: genomics, proteomics, and particularly metabolomics and phenomics—emerging and maturing fields.
 
 These disciplines are reshaping medicine, agriculture, biotechnology, and environmental sustainability globally. Yet Africa, with its unparalleled genetic and ecological diversity, remains underrepresented in these frontier fields.
@@ -24,11 +25,28 @@ This imbalance is not due to a lack of potential, but a lack of access.`,
   {
     id: 2,
     title: "Collaboration Is Key: Partnering Across the Continent and Beyond",
+    permlink:"Partnering_Across_the_Continent_and_Beyond",
     excerpt: `The greatest discoveries: from decoding DNA to mapping the human microbiome, were made possible not by isolated minds but by networks of shared knowledge, tools, and vision.`,
     author: "Layo Obidike",
     authorRole: "",
     authorImage: "/lo.png",
-    date: "2025-04-28",
+    date: "2026-01-25",
+    category: "Design",
+    tags: ["Africa", "Omics", "Genomics", "Proteomics", "Metabolomics", "Phenomics",],
+    readingTime: "8 min read"
+  },
+
+    {
+    id: 3,
+    title: "Addressing Africa’s Health Challenges Through Metabolomics",
+    permlink:"Africa_Health_Challenges_Through_Metabolomics",
+    excerpt: `
+      Africa faces a complex web of health challenges: from infectious diseases to rising chronic conditions like diabetes, hypertension, and cancer. Yet, within these challenges lies an opportunity:
+    `,
+    author: "Layo Obidike",
+    authorRole: "",
+    authorImage: "/lo.png",
+    date: "2026-01-27",
     category: "Design",
     tags: ["Africa", "Omics", "Genomics", "Proteomics", "Metabolomics", "Phenomics",],
     readingTime: "8 min read"
@@ -122,7 +140,7 @@ const Archive = () => {
                   </div>
                   
                   <h2 className="text-2xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors leading-tight">
-                    <Link href={`/blog/${post.id}`}>{post.title}</Link>
+                    <Link href={`/blog/${post.permlink}`}>{post.title}</Link>
                   </h2>
                   
                   <p className="text-slate-600 leading-relaxed text-lg line-clamp-2">
