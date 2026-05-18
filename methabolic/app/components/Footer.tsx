@@ -56,7 +56,7 @@ export default function Footer() {
     {/* Bottom Copyright */}
     <div className="mt-12 pt-8 border-t border-gray-200 text-center text-sm text-gray-600">
     <p>  © 2026 Metabolomics Africa Collective. All rights reserved.</p>
-            <p>Powered by <span><a href="https://ithriveonwisdom.com" className="text-purple-700 hover:underline">ThriveOn <img src="thriveon.png" alt="ThriveOn Logo" className="inline-block ml-2 w-8 h-8 rounded-[50%]" /></a></span></p>
+            <p>Powered by <span><a href="https://loplatforms.com" className="text-purple-700 hover:underline">LO Platforms<img src="loplatform_logo.png" alt="LO PlatformsLogo" className="inline-block ml-2 w-8 h-8 rounded-[50%]" /></a></span></p>
     </div>
   </div>
 </footer>
