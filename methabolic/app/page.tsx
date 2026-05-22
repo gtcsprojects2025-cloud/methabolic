@@ -2,7 +2,7 @@
 
 
 "use client";
-
+import Link from "next/link";
 import { useState } from "react";
 import { Pause,    Dna, 
   Database, 
@@ -45,7 +45,7 @@ export default function Home() {
 
   const audiencePaths = [
     { title: "Mentorship Network", paragraph: "Connect, mentor, and collaborate with emerging scientists across the continent. The mentor intake form will be published here shortly.", link: "Sign up to mentor →", url:"https://docs.google.com/forms/d/e/1FAIpQLSfR8oq7QDOVCFYGGy8nqICnck3SnYbmHonepuPhuOtxhnuuTg/viewform" },
-    { title: "Network Engagement", paragraph: "All roads lead to the 1st African Metabolomics Conference 2026, the flagship gathering hosted by Metabolomics South Africa (MSA). Dive into conference programming.", link: "Explore the 1st African Metabolomics Conference 2026 →", url:"https://www.metabolomics-sa.co.za/metabolomics-africa-2026" },
+    { title: "1st African Metabolomics Conference", paragraph: "Explore the 1st African Metabolomics Conference 2026, the flagship gathering hosted by Metabolomics South Africa (MSA). Dive into conference programming.", link: "Explore the 1st African Metabolomics Conference 2026 →", url:"https://www.metabolomics-sa.co.za/metabolomics-africa-2026" },
     { title: "Data Contribution", paragraph: "Help build the Pan-African knowledge graph by securely contributing metabolomics datasets.", link: "Contact us to learn more →", url:"mailto:metabolomicsafrica@gmail.com" },
   ];
 
@@ -187,13 +187,11 @@ export default function Home() {
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-3 sm:space-y-0 sm:space-x-4 pt-4">
-                      <button 
-                        onClick={() => setActiveTab('amp')} 
-                        className="bg-slate-900 hover:bg-slate-850 text-white font-bold px-6 py-4 rounded-xl text-sm border border-slate-800 hover:border-teal-500/45 transition-all flex items-center justify-center space-x-2"
+                      <Link href="/amp" className="bg-slate-900 hover:bg-slate-850 text-white font-bold px-6 py-4 rounded-xl text-sm border border-slate-800 hover:border-teal-500/45 transition-all flex items-center justify-center space-x-2"
                       >
                         <span>Explore the AMP Initiative</span>
                         <ChevronRight className="w-4 h-4 text-teal-400" />
-                      </button>
+                      </Link>
                       <button 
                         onClick={() => {
                           const target = document.getElementById('why-matters');
@@ -410,7 +408,7 @@ export default function Home() {
                     Why Metabolomics Matters to Africa
                   </h2>
                   <p className="text-black mt-4 text-base sm:text-lg">
-                    While genes lay the blueprint of life, metabolites represent the ultimate direct signature of biology interacting with environment, diet, and disease.
+                    While genes lay the blueprint of life, small molecules represents the ultimate direct signature of biology interacting with environment, diet, and disease.
                   </p>
                 </div>
 
@@ -444,7 +442,7 @@ export default function Home() {
                         <div className="w-10 h-10 bg-teal-950 text-teal-400 border border-teal-800/40 rounded-lg flex items-center justify-center">
                           <Activity className="w-5 h-5" />
                         </div>
-                        <h3 className="text-xl sm:text-2xl font-black text-white">The Real-Time Language of Health</h3>
+                        <h3 className="text-xl sm:text-2xl font-black text-white">The Real-Time Language of Biology</h3>
                         <p className="text-slate-300 leading-relaxed font-light">
                           Metabolomics is the comprehensive identification and quantification of all small-molecule chemical metabolites (amino acids, lipids, sugars, signals) within an organism.
                         </p>
@@ -459,9 +457,9 @@ export default function Home() {
                             <span>GENOMICS (Potential)</span>
                             <span className="text-slate-500">Static Blueprint</span>
                           </div>
-                          <div className="flex items-center justify-between p-2 bg-slate-900 rounded border border-slate-800/60 text-slate-400">
+                          <div className="flex items-center justify-between p-1 bg-slate-900 rounded border border-slate-800/60 text-slate-400">
                             <span>TRANSCRIPTOMICS (Intent)</span>
-                            <span className="text-slate-500">Gene Activation</span>
+                            <span className="text-slate-500"> Gene Activation</span>
                           </div>
                           <div className="flex items-center justify-between p-2 bg-slate-900 rounded border border-slate-800/60 text-slate-400">
                             <span>PROTEOMICS (Action)</span>
@@ -484,7 +482,7 @@ export default function Home() {
                         </div>
                         <h3 className="text-xl sm:text-2xl font-black text-white">Consolidating Fragmented Capacity</h3>
                         <p className="text-slate-300 leading-relaxed font-light">
-                          Africa has world-class scientists but historically lacked centralized, high-throughput metabolomics infrastructure. Individual institutions faced massive instrument capital costs and sample bottlenecks.
+                          Africa has world-class scientists but historically lacked centralized, high-throughput metabolomics infrastructure. Individual institutions face massive instrument capital costs and sample bottlenecks.
                         </p>
                         <p className="text-slate-400 leading-relaxed text-sm">
                           By building a coordinated **scientific infrastructure platform**, we standardize specimen logistics, cross-validate mass spectrometry workflows, and provide open access to state-of-the-art computational pipelines.
@@ -534,11 +532,11 @@ export default function Home() {
                           </div>
                           <div className="flex items-center justify-between text-xs text-white p-2 bg-slate-900 rounded">
                             <span>Clinical Cohorts (Metabolic Syndrome)</span>
-                            <span className="text-teal-400 font-bold font-mono">1,800 Profiles</span>
+                            <span className="text-teal-400 font-bold font-mono">1,800+ Profiles</span>
                           </div>
                           <div className="flex items-center justify-between text-xs text-white p-2 bg-slate-900 rounded">
                             <span>Climate-Resilient Crop Biosignatures</span>
-                            <span className="text-cyan-400 font-bold font-mono">1,200 Genotypes</span>
+                            <span className="text-cyan-400 font-bold font-mono">1,200+ Genotypes</span>
                           </div>
                         </div>
                       </div>
@@ -625,7 +623,7 @@ export default function Home() {
                       Strategic Partnerships & Engagements
                     </h2>
                     <p className="text-black leading-relaxed font-light">
-                      To build credible continental infrastructure, we actively collaborate with academic entities, government ministries, clinical trial groups, and international diagnostic partners.
+                      To build credible continental infrastructure, we actively collaborate with academic entities, government institutions, clinical trial groups, and international diagnostic partners.
                     </p>
                     <p className="text-black leading-relaxed text-xs">
                       These partnerships drive harmonized ethical baselines, specimen logistic pipelines, and cloud computational resource sharing.
@@ -635,7 +633,7 @@ export default function Home() {
                       onClick={() => showToast('Inquire sent! Our coordination cell will reach out within 48 hours.')}
                       className="bg-whitehover:bg-indigo-900/50 text-black border border-indigo-500/30 px-5 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all"
                     >
-                      Propose Collaboration
+                      Propose Collaborations
                     </button>
                   </div>
 
@@ -647,17 +645,7 @@ export default function Home() {
                       <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4 border-b border-slate-800 pb-2">
                         Universities & Research Centres
                       </h4>
-                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                        <div className="p-3 bg-slate-950 rounded border border-slate-850/60 text-center text-xs font-mono text-slate-300">
-                          North-West University (NWU)
-                        </div>
-                        <div className="p-3 bg-slate-950 rounded border border-slate-850/60 text-center text-xs font-mono text-slate-300">
-                          University of Venda (CEMSA)
-                        </div>
-                        <div className="p-3 bg-slate-950 rounded border border-slate-850/60 text-center text-xs font-mono text-slate-300">
-                          Metabolomics South Africa
-                        </div>
-                      </div>
+
                     </div>
 
                     {/* Government & Policy Engagement */}
@@ -665,14 +653,15 @@ export default function Home() {
                       <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4 border-b border-slate-800 pb-2">
                         Government & Policy Engagements
                       </h4>
-                      <div className="grid grid-cols-2 gap-3">
-                        <div className="p-3 bg-slate-950 rounded border border-slate-850/60 text-center text-xs font-mono text-slate-300">
-                          African Union DA-2063 Hubs
-                        </div>
-                        <div className="p-3 bg-slate-950 rounded border border-slate-850/60 text-center text-xs font-mono text-slate-300">
-                          Min. of Science & Technology Initiatives
-                        </div>
-                      </div>
+
+                    </div>
+
+                    {/* Research Institutions */}
+                    <div className="bg-black p-5 rounded-xl border border-slate-850">
+                      <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4 border-b border-slate-800 pb-2">
+                        Research Institutions
+                      </h4>
+
                     </div>
 
                     {/* Clinical Collaborators & Biobanks */}
@@ -680,17 +669,7 @@ export default function Home() {
                       <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4 border-b border-slate-800 pb-2">
                         Clinical Biobanks & Industry Partners
                       </h4>
-                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                        <div className="p-3 bg-slate-950 rounded border border-slate-850/60 text-center text-xs font-mono text-slate-300">
-                          Pan-African Biobank Net
-                        </div>
-                        <div className="p-3 bg-slate-950 rounded border border-slate-850/60 text-center text-xs font-mono text-slate-300">
-                          International MetSoc
-                        </div>
-                        <div className="p-3 bg-slate-950 rounded border border-slate-850/60 text-center text-xs font-mono text-slate-300">
-                          HART Research Team
-                        </div>
-                      </div>
+
                     </div>
 
                   </div>
@@ -807,7 +786,7 @@ export default function Home() {
           </p>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition">
+            {/* <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition">
               <div className="flex flex-col md:flex-row justify-between items-start mb-6">
                 <p className="text-purple-900 font-semibold uppercase tracking-wider text-sm">11–13 March 2026</p>
                 <a href="https://www.metabolomics-sa.co.za/metabolomics-africa-2026" className="">
@@ -820,7 +799,7 @@ export default function Home() {
               <p className="text-base text-gray-700">
                 Metabolomics South Africa (MSA) hosts the continental summit featuring translational demos, policy convenings, and Africa-first metabolomics standards.
               </p>
-            </div>
+            </div> */}
 
             <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition">
               <div className="flex flex-col md:flex-row justify-between items-start mb-6">

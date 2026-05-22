@@ -4,6 +4,7 @@
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown, Bell } from "lucide-react";
+import Link from "next/link";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -167,6 +168,9 @@ const toggleDropdown = (name: string) => {
           STEMxAfrica
           <ChevronDown size={16} />
         </button>
+       <Link href="/amp" className="block px-6 py-2 text-base hover:bg-purple-100 hover:text-purple-900 transition">
+                A M Project
+              </Link>
 
         {/* Submenu - Events & Gallery */}
         {isStemOpen && (
@@ -275,6 +279,22 @@ className="px-4 py-2 text-base font-bold hover:text-purple-900 transition"      
           <ChevronDown size={16} />
         </button>
 
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            // setIsStemOpen(!isStemOpen);
+          }}
+          className="w-full flex items-center justify-between px-6 py-2 text-base font-bold hover:text-purple-900 transition text-left"
+        >
+          <Link href="/amp" className="block px-1 py-2 text-base hover:bg-purple-100 hover:text-purple-900 transition">
+          AM Project
+          </Link>
+          <ChevronDown size={16} />
+        </button>
+
+
+
+
         {/* Submenu - Events & Gallery */}
         {isStemOpen && (
           <ul
@@ -305,6 +325,9 @@ className="px-4 py-2 text-base font-bold hover:text-purple-900 transition"      
                 Gallery
               </a>
             </li>
+          <Link href="/amp" className="block px-6 py-2 text-base hover:bg-purple-100 hover:text-purple-900 transition">
+                A M Project
+        </Link>
            
           </ul>
         )}

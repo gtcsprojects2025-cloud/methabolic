@@ -64,7 +64,7 @@ Held September 26, 2025 across multiple Nigerian states with STEMxClubs launched
             <div className="bg-white rounded-3xl shadow-md overflow-hidden">
               <div className="relative h-64">
                 <Image
-                  src="/Image 8.jpg"
+                  src="/Image 2.jpeg"
                   alt="Students reaching 10 million"
                   fill
                   className="object-cover"
@@ -82,7 +82,7 @@ Held November 28, 2025 across Greater Accra, Ashanti, and Central Regions, featu
             <div className="bg-white rounded-3xl shadow-md overflow-hidden">
               <div className="relative h-64">
                 <Image
-                  src="/Image 9.jpg"
+                  src="/Image 6.jpeg"
                   alt="Establishing Omics Clubs"
                   fill
                   className="object-cover"
@@ -92,7 +92,8 @@ Held November 28, 2025 across Greater Accra, Ashanti, and Central Regions, featu
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
 Tanzania activation                </h3>
                 <p className="text-base text-gray-700">
-Scheduled for January 30, 2026 in Tanzania, continuing the movement to spark STEM curiosity and expand STEMxClubs across the continent.                </p>
+                  Held February 20, 2026 across Tanzania, featuring metabolomics experts from the USA, Canada and Cameroon and the launch of STEMxClubs in Tanzania.
+               </p>
               </div>
             </div>
 
