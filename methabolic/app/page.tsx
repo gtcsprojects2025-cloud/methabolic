@@ -3,7 +3,9 @@
 
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import {PRELOADED_ANNOUNCEMENTS, PRELOADED_ARTICLES} from "../app/preloaded_data/data"; // Importing preloaded data for immediate UI rendering
+
 import { Pause,    Dna, 
   Database, 
   Cpu, 
@@ -33,16 +35,74 @@ import { Pause,    Dna,
   FileSpreadsheet, 
   Building} from "lucide-react";
 import Footer from "./components/Footer";
-export default function Home() {
-  const [videoPlaying, setVideoPlaying] = useState(true);
+import { getSheetData } from "./components/sheets";
+// export const revalidate = 3600; // Revalidate data at most every hour
 
+
+export default  function Home() {
+
+  // const teamMembers = await getSheetData();
+
+  // if (teamMembers.length === 0) {
+  //   return <p className="p-8 text-center">No data found or failed to load sheet.</p>;
+  // }
+
+  const [teamMembers, setTeamMembers] = useState<any[]>([]);
+  const [events, setEvents] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+
+  const [videoPlaying, setVideoPlaying] = useState(true);
+  const [announcements, setAnnouncements] = useState(PRELOADED_ANNOUNCEMENTS); // Show all announcements by default
+  // const [test, setTest] = useState(getSheetData()); // Fetch data from Google Sheets on component mount
     // Trigger temporary floating notification
   const showToast = (message:any) => {
     setCustomNotify(message);
     setTimeout(() => setCustomNotify(null), 4000);
   };
   
+  useEffect(() => {
+    // Initialization logic if needed
+  }, [announcements]);
 
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch('/api/announcement');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setTeamMembers(data);
+      } catch (err:any) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchData();
+  }, []);
+
+    useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch('/api/events');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setEvents(data);
+      } catch (err:any) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchData();
+  }, []);
   const audiencePaths = [
     { title: "Mentorship Network", paragraph: "Connect, mentor, and collaborate with emerging scientists across the continent. The mentor intake form will be published here shortly.", link: "Sign up to mentor →", url:"https://docs.google.com/forms/d/e/1FAIpQLSfR8oq7QDOVCFYGGy8nqICnck3SnYbmHonepuPhuOtxhnuuTg/viewform" },
     { title: "1st African Metabolomics Conference", paragraph: "Explore the 1st African Metabolomics Conference 2026, the flagship gathering hosted by Metabolomics South Africa (MSA). Dive into conference programming.", link: "Explore the 1st African Metabolomics Conference 2026 →", url:"https://www.metabolomics-sa.co.za/metabolomics-africa-2026" },
@@ -159,6 +219,7 @@ export default function Home() {
 
   {/* Hero Content - Bottom Left */}
             {/* HERO SECTION */}
+          
             <section className="relative overflow-hidden py-16 lg:py-24 border-b border-slate-900">
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[350px] bg-indigo-500/10 rounded-full blur-[140px] pointer-events-none" />
               <div className="absolute top-1/3 left-1/4 w-[500px] h-[250px] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none" />
@@ -354,8 +415,9 @@ export default function Home() {
             alt="Pilot samples analysis in lab"
             className="w-full h-full opacity-50 object-cover absolute inset-0"
           />
-          <div className="absolute inset-0 bg-black/60 to-transparent" />
-          <div className="relative p-8 text-white flex flex-col justify-end h-full">
+          <div className="absolute inset-0 bg-black " />
+           
+          {/* <div className="relative p-8 text-white flex flex-col justify-end h-full">
             <p className="uppercase tracking-wider text-sm mb-2 opacity-90">Latest Network Updates (What we aim to achieve)</p>
             <ul className="space-y-4 text-lg">
               <li>• African Country 1: Our first pilot samples arrived from community biobanks and are entering analysis.</li>
@@ -363,7 +425,26 @@ export default function Home() {
               <li>• African Country 3: Stakeholder meeting held to harmonize data sharing standards with policy bodies.</li>
             </ul>
             <p className="mt-6 text-sm uppercase tracking-wider opacity-80">Signal updated • Just now</p>
+          </div> */}
+
+
+
+      <div className="grid gap-4 md:grid-cols-1 px-4 py-6">
+       
+        {teamMembers.map((member) => (
+          <div 
+            key={member.id} 
+            className="p-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl shadow-lg"
+          >
+            <h2 className="text-xl font-semibold text-white">{member.title}</h2>
+            <p className="text-sm opacity-80 text-white">{member.date}</p>
+            <span className="inline-block mt-2 text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">
+              {member.content}
+            </span>
           </div>
+        ))}
+         
+      </div>
         </div>
             
               <div className="bg-white rounded-2xl p-6 shadow-md">
@@ -547,7 +628,12 @@ export default function Home() {
               </div>
             </section>
 
-
+{/* {test && (
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h3 className="text-xl font-bold text-white">Test Data from Google Sheets</h3>
+    <pre>{JSON.stringify(test, null, 2)}</pre>
+  </div>
+)} */}
 
             {/* Strategic Importance for Africa */}
             <section className="py-20 border-b border-slate-900 bg-black from-slate-950 to-indigo-950/20">
@@ -786,35 +872,29 @@ export default function Home() {
           </p>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            {/* <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition">
-              <div className="flex flex-col md:flex-row justify-between items-start mb-6">
-                <p className="text-purple-900 font-semibold uppercase tracking-wider text-sm">11–13 March 2026</p>
-                <a href="https://www.metabolomics-sa.co.za/metabolomics-africa-2026" className="">
-                <button className="mt-4 md:mt-0 border-2 border-purple-900 text-purple-900 px-6 py-3 rounded-full text-base font-medium hover:bg-purple-50 transition">
-                  Visit Conference Site
-                </button>
-                </a>
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">1st African Metabolomics Conference 2026</h3>
-              <p className="text-base text-gray-700">
-                Metabolomics South Africa (MSA) hosts the continental summit featuring translational demos, policy convenings, and Africa-first metabolomics standards.
-              </p>
-            </div> */}
+            {events.map((event, i) => (
 
-            <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition">
-              <div className="flex flex-col md:flex-row justify-between items-start mb-6">
-                <p className="text-purple-900 font-semibold uppercase tracking-wider text-sm">Monthly • Virtual</p>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKT5Iq8Ucxgojp9f23bQckR7Q6TgI0UmkSD2_kzWVeyxcuAg/viewform" className="">
-                <button className="mt-4 md:mt-0 border-2 border-amber-600 text-amber-700 px-6 py-3 rounded-full text-base font-medium hover:bg-amber-50 transition opacity-80">
-Register Here               
- </button>
-                </a>
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Metabolomics Africa Studio Hours</h3>
+            <div key={i}  className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition">
+              
+                <div className=" md:flex-row justify-between items-start mb-6">
+                  <div className="flex items-center justify-between gap-3 pb-6">
+                  <p className="text-black font-semibold uppercase tracking-wider text-sm">{event.date}</p>
+                  <a href={` ${event.link}`} className="">
+                    <button className="mt-4 md:mt-0 border-2 border-purple-900 text-purple-900 px-6 py-3 rounded-full text-base font-medium hover:bg-purple-50 transition">
+                      {event.cta}
+                    </button>
+                  </a>
+                 </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">{event.title}</h3>
               <p className="text-base text-gray-700">
-                Open community session for Q&A, live consulting for farmers, healthcare workers, producers, and biotech partners.
+            {event.content}
               </p>
+              </div>
+                
+             
+
             </div>
+             ))}
           </div>
         </div>
       </section>
