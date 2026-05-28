@@ -21,8 +21,8 @@ async function getBlogData(slug:string) {
   // Call your local API internally to process the doc content
   // In Next.js Server Components, use an absolute URL or export the API logic directly.
   try {
-    // const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-    const res = await fetch(`/api/generate-blog`, {
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+    const res = await fetch(`${baseUrl}/api/generate-blog`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ docUrl }),
