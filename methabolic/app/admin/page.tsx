@@ -562,7 +562,8 @@ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     };
 
   try {
-    const response = await fetch(APPS_SCRIPT_URL as string, {
+    console.log("Submitting announcement to Google Apps Script:", newAnnouncement);
+    const response = await fetch(process.env.NEXT_PUBLIC_APPS_SCRIPT_URL as string, {
       method: 'POST',
       mode: 'cors', 
       headers: {
@@ -573,9 +574,18 @@ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 
     const result = await response.json();
 
+  //   let result;
+  // try {
+  //   result = JSON.parse(rawText);
+  // } catch (parseError) {
+  //   console.log("Server did not return JSON. Raw response was:", rawText);
+  //   throw new Error("Invalid server response format.");
+  // }
+
     if (result.status === 'success') {
       setStatusMessage("success");
     } else {
+      setStatusMessage("Failed to submit announcement.");
       throw new Error(result.message || 'Failed to write to sheet.');
     }
   } catch (error) {
@@ -613,7 +623,7 @@ const handleNewBlog = async (e: FormEvent<HTMLFormElement>) => {
     };
 
   try {
-    const response = await fetch(APPS_SCRIPT_URL as string, {
+    const response = await fetch(process.env.NEXT_PUBLIC_APPS_SCRIPT_URL as string, {
       method: 'POST',
       mode: 'cors', 
       headers: {
@@ -627,6 +637,7 @@ const handleNewBlog = async (e: FormEvent<HTMLFormElement>) => {
     if (result.status === 'success') {
       setStatusMessage("success");
     } else {
+      setStatusMessage("Failed to submit blog post.");
       throw new Error(result.message || 'Failed to write to sheet.');
     }
   } catch (error) {
