@@ -149,6 +149,8 @@ export async function POST(request: Request) {
           { role: 'user', content: userPrompt }
         ],
         temperature: 0.2,
+        // 🧠 Add this line to force valid JSON structure
+      response_format: { type: "json_object" }
       })
     );
 

@@ -42,8 +42,13 @@ async function getBlogData(slug:string) {
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   // Await params in Next.js App Router
   const { slug } = await params;
-  const post = await getBlogData(slug);
-  console.log(`Loaded blog post data for slug: ${slug}`, post);
+  // const post = await getBlogData(slug);
+  console.log("1. Original parameters slug:", slug);
+console.log("2. Decoded parameters slug:", decodeURIComponent(slug));
+
+const post = await getBlogData(decodeURIComponent(slug));
+console.log("3. Returned post data:", post);
+  // console.log(`Loaded blog post data for slug: ${slug}`, post);
 
   if (!post) {
     notFound(); // Triggers standard Next.js 404 page

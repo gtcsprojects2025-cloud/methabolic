@@ -29,6 +29,7 @@ import {
   ExternalLink
 } from 'lucide-react';
 import Link from 'next/link';
+import { content } from 'googleapis/build/src/apis/content';
 
 
 const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
@@ -346,6 +347,18 @@ export default function App() {
   const [newAnnounceType, setNewAnnounceType] = useState('info'); // info, warning, success
   const [announceFormError, setAnnounceFormError] = useState('');
 
+
+  // Event form states
+  const [eventTitle, setEventTitle] = useState('');
+  const [eventDescription, setEventDescription] = useState('');
+  const [eventDate, setEventDate] = useState('');
+  const [eventType, setEventType] = useState('webinar'); // webinar, workshop, conference
+  const [eventFormError, setEventFormError] = useState('');
+  const [cta, setCta] = useState("")
+  const [eventLink, setEventLink] = useState("")
+  const [events, setEvents] = useState<any[]>([]);
+
+
   // Active Admin Sub-tab
   const [adminTab, setAdminTab] = useState('blogs'); // 'blogs', 'announcements'
 
@@ -647,6 +660,52 @@ const handleNewBlog = async (e: FormEvent<HTMLFormElement>) => {
     setLoading(false);
   }
 }; 
+
+const handleEventSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setLoading(true);
+  setEventFormError('');
+
+  // 1. Pick your sheet
+  const targetSheetName = "events"; // Change this to your actual sheet name if different
+
+  // 2. Build the object keys to match that specific sheet's headers EXACTLY
+    const newEvent= {
+      sheetName: targetSheetName,
+      id: Date.now().toString(),
+      title: eventTitle,
+      date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+      content: eventDescription,
+      link: eventLink,
+      venue: eventType,
+      cta: cta
+    };
+
+  try {
+    const response = await fetch(process.env.NEXT_PUBLIC_APPS_SCRIPT_URL as string, {
+      method: 'POST',
+      mode: 'cors', 
+      headers: {
+        'Content-Type': 'text/plain', 
+      },
+      body: JSON.stringify(newEvent), 
+    });
+
+    const result = await response.json();
+
+    if (result.status === 'success') {
+      setEventFormError("");
+    } else {
+      setEventFormError("Failed to submit event.");
+      throw new Error(result.message || 'Failed to write to sheet.');
+    }
+  } catch (error) {
+    console.error('Submission error:', error);
+    setEventFormError('An error occurred while submitting.');
+  } finally {
+    setLoading(false);
+  }
+};
 const handleDeleteAnnouncement = (id:any) => {
     if (confirmDelete('Are you sure you want to delete this announcement?')) {
       setAnnouncements(announcements.filter(ann => ann.id !== id));
@@ -989,7 +1048,21 @@ const handleDeleteAnnouncement = (id:any) => {
                 <Megaphone className="h-4 w-4" />
                 Announcements Workspace
               </button>
+
+                <button 
+                onClick={() => setAdminTab('events')}
+                className={`px-5 py-2 rounded-xl text-sm font-bold flex items-center gap-2 transition ${
+                  adminTab === 'events' 
+                    ? 'bg-indigo-600 text-white shadow-xs' 
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                }`}
+              >
+                <FileText className="h-4 w-4" />
+                Events Manager
+              </button>
             </div>
+
+ 
 
             {/* SUBTAB CONTENT 1: Blogs Manager */}
             {adminTab === 'blogs' && (
@@ -1319,6 +1392,209 @@ const handleDeleteAnnouncement = (id:any) => {
                     >
                       <Plus className="h-4 w-4" />
                       {loading ? 'Submitting...' : 'Deploy Live Broadcast'}
+                  
+                    </button>
+
+                  </form>
+                </div>
+
+                {/* Right Announcements Listing List (7/12) */}
+                <div className="lg:col-span-7 bg-white border border-slate-200 p-6 sm:p-8 rounded-3xl shadow-xs space-y-6">
+                  <div>
+                    <h3 className="text-lg font-black text-slate-900">Current Noticeboard Logs</h3>
+                    <p className="text-slate-500 text-xs font-semibold mt-1">Configure status toggles or completely delete active alerts.</p>
+                  </div>
+
+                  <div className="space-y-4 max-h-[550px] overflow-y-auto pr-1">
+                    {announcements.length === 0 ? (
+                      <p className="text-slate-400 text-sm italic py-8 text-center">No announcements created yet. Use the tool on the left to write one.</p>
+                    ) : (
+                      announcements.map((ann, index) => (
+                        <div 
+                          key={index} 
+                          className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 p-4 rounded-2xl border border-slate-100 hover:bg-slate-50/50 transition"
+                        >
+                          <div className="space-y-1.5 max-w-[400px]">
+                            <div className="flex items-center gap-2">
+                              <span className={`text-[9px] font-black px-2 py-0.5 rounded-md uppercase tracking-wide ${
+                                ann.type === 'warning' 
+                                  ? 'bg-amber-100 text-amber-800' 
+                                  : ann.type === 'success' 
+                                    ? 'bg-emerald-100 text-emerald-800' 
+                                    : 'bg-blue-100 text-blue-800'
+                              }`}>
+                                {ann.type}
+                              </span>
+                              <span className="text-xs text-slate-400 font-semibold">{ann.date}</span>
+                            </div>
+                            <h4 className="font-extrabold text-slate-800 text-sm">{ann.title}</h4>
+                            <p className="text-xs text-slate-500 leading-relaxed line-clamp-2">{ann.content}</p>
+                          </div>
+
+                          <div className="flex items-center gap-3 justify-end shrink-0 pt-2 sm:pt-0">
+                            {/* Toggle Button */}
+                            <button 
+                              onClick={() => toggleAnnouncementStatus(ann.id)}
+                              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition ${
+                                ann.active 
+                                  ? 'bg-emerald-50 text-emerald-700 hover:bg-emerald-100' 
+                                  : 'bg-slate-100 text-slate-500 hover:bg-slate-200'
+                              }`}
+                            >
+                              {ann.active ? 'Active' : 'Disabled'}
+                            </button>
+                            
+                            {/* Delete Button */}
+                            <button 
+                              onClick={() => handleDeleteAnnouncement(ann.id)}
+                              className="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition"
+                            >
+                              <Trash2 className="h-4.5 w-4.5" />
+                            </button>
+                          </div>
+                        </div>
+                      ))
+                    )}
+                  </div>
+                </div>
+
+              </div>
+            )}
+
+            {/* SUBTAB CONTENT 3: Events Manager */}
+
+            {adminTab === 'events' && (
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                {/* Left Form (5/12) */}
+                <div className="lg:col-span-5 bg-white border border-slate-200 p-6 sm:p-8 rounded-3xl shadow-xs space-y-6">
+                  <div>
+                    <h3 className="text-lg font-black text-slate-900 flex items-center gap-2">
+                      <Megaphone className="h-5 w-5 text-indigo-600" />
+                      Create New Event
+                    </h3>
+                    <p className="text-slate-500 text-xs font-semibold mt-1">Broadcast direct updates or emergency warning warnings on live headers.</p>
+                  </div>
+
+                  <form onSubmit={handleEventSubmit} className="space-y-4">
+                    {eventFormError && (
+                      <div className="p-3 bg-rose-50 border border-rose-200 text-rose-800 text-xs font-bold rounded-lg flex items-center gap-2">
+                        <AlertTriangle className="h-4 w-4 shrink-0" />
+                        {eventFormError}
+                      </div>
+                    )}
+
+                    {/* Event Title */}
+                    <div>
+                      <label className="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-1.5">
+                        Event Title *
+                      </label>
+                      <input 
+                        type="text"
+                        placeholder="e.g. Scheduled Network Refresh"
+                        value={eventTitle}
+                        onChange={(e) => setEventTitle(e.target.value)}
+                        className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-hidden focus:ring-2 focus:ring-indigo-500"
+                        required
+                      />
+                    </div>
+                    {/* EventLink */}
+                    <div>
+                      <label className="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-1.5">
+                        Event Link *
+                      </label>
+                      <input 
+                        type="url"
+                        placeholder="e.g. https://example.com/event"
+                        value={eventLink}
+                        onChange={(e) => setEventLink(e.target.value)}
+                        className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-hidden focus:ring-2 focus:ring-indigo-500"
+                        required
+                      />
+                    </div>
+
+                    {/* Severity Selection */}
+                    <div>
+                      <label className="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-1.5">
+                        Event Type / Severity
+                      </label>
+                      <div className="grid grid-cols-3 gap-2">
+                        <button 
+                          type="button"
+                          onClick={() => setEventType('webinar')}
+                          className={`py-2 px-3 rounded-xl text-xs font-bold border transition-all flex items-center justify-center gap-1.5 ${
+                            eventType === 'webinar' 
+                              ? 'bg-blue-600 text-white border-blue-600 shadow-xs' 
+                              : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'
+                          }`}
+                        >
+                          <Info className="h-3.5 w-3.5" />
+                          Webinar
+                        </button>
+                        <button 
+                          type="button"
+                          onClick={() => setEventType('conference')}
+                          className={`py-2 px-3 rounded-xl text-xs font-bold border transition-all flex items-center justify-center gap-1.5 ${
+                            eventType === 'conference' 
+                              ? 'bg-blue-600 text-white border-blue-600 shadow-xs' 
+                              : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'
+                          }`}
+                        >
+                          <AlertTriangle className="h-3.5 w-3.5" />
+                          Conference
+                        </button>
+                        <button 
+                          type="button"
+                          onClick={() => setEventType('workshop')}
+                          className={`py-2 px-3 rounded-xl text-xs font-bold border transition-all flex items-center justify-center gap-1.5 ${
+                            eventType === 'workshop' 
+                              ? 'bg-green-600 text-white border-green-600 shadow-xs' 
+                              : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'
+                          }`}
+                        >
+                          <CheckCircle className="h-3.5 w-3.5" />
+                          Workshop
+                        </button>
+                      </div>
+                    </div>
+
+                       <div>
+                        <label className="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-1.5">
+                          Event CTA
+                        </label>
+                        <select 
+                          value={cta}
+                          onChange={(e) => setCta(e.target.value)}
+                          className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm bg-slate-50 font-semibold focus:outline-hidden focus:ring-2 focus:ring-indigo-500"
+                        >
+                          {["Read More", "Register Now", "Join Here"].filter(c => c !== 'All').map(cat => (
+                            <option key={cat} value={cat}>{cat}</option>
+                          ))}
+                        </select>
+                      </div>
+
+                    {/* Message Body */}
+                    <div>
+                      <label className="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-1.5">
+                        Event Description *
+                      </label>
+                      <textarea 
+                        rows={4}
+                        placeholder="Write a clear, concise event description..."
+                        value={eventDescription}
+                        onChange={(e) => setEventDescription(e.target.value)}
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-hidden focus:ring-2 focus:ring-indigo-500 placeholder:text-slate-400 leading-relaxed"
+                        required
+                      ></textarea>
+                    </div>
+
+                    {/* Broadcast Action */}
+                    <button 
+                      type="submit"
+                      className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-xl text-sm transition duration-150 flex items-center justify-center gap-2 shadow-xs"
+                    >
+                      <Plus className="h-4 w-4" />
+                      {loading ? 'Submitting...' : 'Deploy Upcoming Event'}
                   
                     </button>
 
