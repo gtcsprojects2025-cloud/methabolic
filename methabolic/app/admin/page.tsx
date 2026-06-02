@@ -26,11 +26,14 @@ import {
   Bell,
   Menu,
   X,
-  ExternalLink
+  ExternalLink,
+  LogOut,
+  CirclePower,
+  
 } from 'lucide-react';
 import Link from 'next/link';
 import { content } from 'googleapis/build/src/apis/content';
-
+import { redirect } from 'next/navigation';
 
 const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
 // High-quality preloaded articles to showcase the design immediately
@@ -399,6 +402,12 @@ export default function App() {
     }
 
     fetchData();
+  }, []);
+
+  useEffect(() => {
+    if(!localStorage.getItem('isLoggedIn')) {
+      redirect('/login');
+    }
   }, []);
 
   const handleViewArticle = (id:any) => {
@@ -793,6 +802,20 @@ const handleDeleteAnnouncement = (id:any) => {
               >
                 <LayoutDashboard className="h-4 w-4" />
                 Admin Dashboard
+              </button>
+                            <button 
+                onClick={() => {
+                  localStorage.removeItem('isLoggedIn');
+                  redirect('/login');
+                }}
+                className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 ${
+                  currentView === 'admin' 
+                    ? 'bg-slate-900 text-white shadow-md' 
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                }`}
+              >
+                <CirclePower className="h-4 w-4 text-red-500" />
+                Logout
               </button>
             </nav>
 

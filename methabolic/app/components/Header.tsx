@@ -3,7 +3,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronDown, Bell } from "lucide-react";
+import { Menu, X, ChevronDown, Bell, User } from "lucide-react";
 import Link from "next/link";
 
 export default function Header() {
@@ -228,6 +228,14 @@ className="px-4 py-2 text-base font-bold hover:text-purple-900 transition"      
                 Blog
               </a>
             </li>
+
+            <li>
+              <a
+                href="/login"
+                className="px-4 py-2 text-base font-bold hover:text-purple-900 transition"              >
+                <User size={16} className="inline-block mr-1 w-6 h-6 border-2 border-purple-900 rounded-full" />
+              </a>
+            </li>
               </ul>
             </div>
           </nav>
@@ -343,6 +351,13 @@ className="px-4 py-2 text-base font-bold hover:text-purple-900 transition"      
                 className="block text-lg font-medium hover:text-purple-900"
               >
                 Blog
+              </a>
+            </li>
+            <li>
+              <a
+                href="/login"
+                className="px-4 py-2 text-base font-bold hover:text-purple-900 transition"              >
+                <User size={16} className="inline-block mr-1 w-6 h-6 border-2 border-purple-900 rounded-full" />
               </a>
             </li>
             </ul>

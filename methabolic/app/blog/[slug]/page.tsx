@@ -1,6 +1,7 @@
+
 // src/app/blog/[slug]/page.jsx
 import { getDocUrlBySlug, getAllSlugs } from '../../components/blog-registry';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { Calendar, Clock, ArrowLeft, Heart, MessageSquare, Share2, Bookmark } from 'lucide-react';
 
 // Optional: Pre-compile paths at build time for instant loading speed
@@ -42,6 +43,7 @@ async function getBlogData(slug:string) {
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   // Await params in Next.js App Router
   const { slug } = await params;
+  // const router = useRouter(); // 👈 Initialize the router here
   // const post = await getBlogData(slug);
   console.log("1. Original parameters slug:", slug);
 console.log("2. Decoded parameters slug:", decodeURIComponent(slug));
@@ -49,6 +51,8 @@ console.log("2. Decoded parameters slug:", decodeURIComponent(slug));
 const post = await getBlogData(decodeURIComponent(slug));
 console.log("3. Returned post data:", post);
   // console.log(`Loaded blog post data for slug: ${slug}`, post);
+
+
 
   if (!post) {
     notFound(); // Triggers standard Next.js 404 page
