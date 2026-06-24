@@ -29,6 +29,7 @@ import {
   ExternalLink,
   LogOut,
   CirclePower,
+  Edit2,
   
 } from 'lucide-react';
 import Link from 'next/link';
@@ -89,7 +90,10 @@ export const PRELOADED_ANNOUNCEMENTS = [
     content: 'We will be conducting database optimization on Sunday, May 24, at 02:00 AM UTC. Expect temporary read-only access for up to 15 minutes.',
     type: 'warning',
     active: true,
-    date: 'May 22, 2026'
+    date: 'May 22, 2026',
+    link:"",
+    cta:"",
+    venue:""
   },
   {
     id: '2',
@@ -97,7 +101,10 @@ export const PRELOADED_ANNOUNCEMENTS = [
     content: 'We have launched our newly integrated authoring workspace today. Create rich articles, manage your metrics, and customize announcements effortlessly.',
     type: 'success',
     active: true,
-    date: 'May 20, 2026'
+    date: 'May 20, 2026',
+    link:"",
+    cta:"",
+    venue:""
   }
 ];
 
@@ -117,6 +124,18 @@ interface FormDataState {
   content: string;
   type: string;
   active: boolean;
+}
+
+// 1. Define the type for our form's internal state
+interface EventType {
+  id:string;
+  link:string;
+  date:string;
+  title: string;
+  content: string;
+  type: string;
+  active: boolean;
+  venue:string;
 }
 
 // 2. Define the exact shape your Google Apps Script is expecting
@@ -325,6 +344,9 @@ export default function App() {
   const [selectedArticleId, setSelectedArticleId] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
+
+
+  
   
   // Mobile Nav State
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -360,7 +382,67 @@ export default function App() {
   const [cta, setCta] = useState("")
   const [eventLink, setEventLink] = useState("")
   const [events, setEvents] = useState<any[]>([]);
+  const [eventsAnnouncements, setEventsAnnouncements] = useState(PRELOADED_ANNOUNCEMENTS);
+const [editing, setEditing] = useState(false)
+const [eventId, setEventId]= useState('')
+  const handleEventEdit =(id:string)=>{
+    setEditing(true)
+    eventsAnnouncements.map((eventAnn)=>{
+      if(eventAnn.title===id){
 
+        console.log(eventAnn)
+        setEventId(eventAnn.id)
+        setEventTitle(eventAnn.title)
+        setEventLink(eventAnn.link)
+        setEventType(eventAnn.type)
+        setEventDescription(eventAnn.content)
+        setCta(eventAnn.cta)
+        // setEventType(eventAnn.venue)
+      }
+    })
+  }
+
+
+ // === SEND DATA TO BACKEND ===
+  const handleEventUpdate = async () => {
+    // e.preventDefault();
+    setLoading(true)
+    setError(null);
+
+    const newEventData={
+      id:eventId,
+      title:eventTitle,
+      link:eventLink,
+      type:eventType,
+      content:eventDescription,
+      cta:cta
+    }
+
+    try {
+      const response = await fetch(`/api/event/`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newEventData),   // ← This sends all form data
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to update event');
+      }
+
+      alert('✅ Event updated successfully in Google Sheet!');
+      // router.push('/events');     // Redirect after success
+      // router.refresh();
+      setLoading(false)
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      // setSaving(false);
+    }
+  };
 
   // Active Admin Sub-tab
   const [adminTab, setAdminTab] = useState('blogs'); // 'blogs', 'announcements'
@@ -402,6 +484,27 @@ export default function App() {
     }
 
     fetchData();
+  }, []);
+
+
+
+     useEffect(() => {
+    async function fetchEventData() {
+      try {
+        const response = await fetch('/api/event');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setEventsAnnouncements(data);
+      } catch (err:any) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchEventData();
   }, []);
 
   useEffect(() => {
@@ -1612,6 +1715,18 @@ const handleDeleteAnnouncement = (id:any) => {
                     </div>
 
                     {/* Broadcast Action */}
+                    {editing?(
+                    <button
+                          type="button"                    // ← Important: not submit
+                          onClick={handleEventUpdate}      // ← Fixed
+                          disabled={loading}
+                          className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-xl text-sm transition duration-150 flex items-center justify-center gap-2 shadow-xs disabled:opacity-70"
+                        >
+                          <Plus className="h-4 w-4" />
+                          {loading ? 'Updating...' : 'Update Event'}
+                        </button>
+                    ):(<>
+                    
                     <button 
                       type="submit"
                       className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-xl text-sm transition duration-150 flex items-center justify-center gap-2 shadow-xs"
@@ -1620,6 +1735,9 @@ const handleDeleteAnnouncement = (id:any) => {
                       {loading ? 'Submitting...' : 'Deploy Upcoming Event'}
                   
                     </button>
+                    
+                    </>)}
+
 
                   </form>
                 </div>
@@ -1632,10 +1750,10 @@ const handleDeleteAnnouncement = (id:any) => {
                   </div>
 
                   <div className="space-y-4 max-h-[550px] overflow-y-auto pr-1">
-                    {announcements.length === 0 ? (
+                    {eventsAnnouncements.length === 0 ? (
                       <p className="text-slate-400 text-sm italic py-8 text-center">No announcements created yet. Use the tool on the left to write one.</p>
                     ) : (
-                      announcements.map((ann, index) => (
+                      eventsAnnouncements.map((ann, index) => (
                         <div 
                           key={index} 
                           className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 p-4 rounded-2xl border border-slate-100 hover:bg-slate-50/50 transition"
@@ -1668,6 +1786,13 @@ const handleDeleteAnnouncement = (id:any) => {
                               }`}
                             >
                               {ann.active ? 'Active' : 'Disabled'}
+                            </button>
+                            {/* Edit button */}
+                            <button 
+                              onClick={() => handleEventEdit(ann.title)}
+                              className="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition"
+                            >
+                              <Edit2 className="h-4.5 w-4.5" />
                             </button>
                             
                             {/* Delete Button */}

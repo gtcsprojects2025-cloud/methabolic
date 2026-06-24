@@ -719,7 +719,7 @@ export default  function Home() {
                       onClick={() => showToast('Inquire sent! Our coordination cell will reach out within 48 hours.')}
                       className="bg-whitehover:bg-indigo-900/50 text-black border border-indigo-500/30 px-5 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all"
                     >
-                      Propose Collaborations
+                      Proposed Collaborations
                     </button>
                   </div>
 
