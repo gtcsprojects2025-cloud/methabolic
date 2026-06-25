@@ -73,31 +73,3 @@ export async function PUT(req:NextRequest) {
 }
 
 
-// ======================
-// DELETE ROW
-// ======================
-export async function DELETE(req: Request, { params }: { params: { id: string } }) {
-  try {
-    const sheet = await getWorksheet();
-    const rows = await sheet.getRows();
-
-    const rowIndex = rows.findIndex(r => r.get('id') === params.id);
-
-    if (rowIndex === -1) {
-      return Response.json({ error: 'Event not found' }, { status: 404 });
-    }
-
-    const rowToDelete = rows[rowIndex];
-    await rowToDelete.delete();   // ← This deletes the row
-
-    return Response.json({ 
-      success: true, 
-      message: `Event ${params.id} deleted successfully` 
-    });
-  } catch (error: any) {
-    console.error(error);
-    return Response.json({ 
-      error: 'Failed to delete event from Google Sheet' 
-    }, { status: 500 });
-  }
-}
