@@ -371,6 +371,92 @@ export default function App() {
   const [newAnnounceContent, setNewAnnounceContent] = useState('');
   const [newAnnounceType, setNewAnnounceType] = useState('info'); // info, warning, success
   const [announceFormError, setAnnounceFormError] = useState('');
+  const [newAnnouncementId, setNewAnnouncementId] = useState('');
+   const [annEditing, setAnnEditing] = useState(false);
+
+    const handleAnnouncementEdit =(id:string)=>{
+    setAnnEditing(true)
+    announcements.map((ann)=>{
+      if(ann.id===id){
+
+        console.log(ann)
+        setNewAnnouncementId(ann.id)
+        setNewAnnounceTitle(ann.title)
+        setNewAnnounceType(ann.type)
+        setNewAnnounceContent(ann.content)
+      }
+    })
+  }
+
+
+  const handleAnnouncementUpdate = async ()=>{
+        // e.preventDefault();
+    setLoading(true)
+    setError(null);
+
+    const newAnnouncementData={
+      id:newAnnouncementId,
+      title:newAnnounceTitle,
+      type:newAnnounceType,
+      content:newAnnounceContent,
+      
+    }
+
+    try {
+      const response = await fetch(`/api/announcement/`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newAnnouncementData),   // ← This sends all form data
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to update announcement');
+      }
+
+      alert('✅ Announcement updated successfully!');
+      // router.push('/events');     // Redirect after success
+      // router.refresh();
+      setLoading(false)
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      // setSaving(false);
+    }
+  }
+
+
+  // Add this function
+const deleteAnnouncement = async (id:string) => {
+  if (!confirm('Are you sure you want to delete this event?')) return;
+
+  setLoading(true);
+  // setEventFormError(null);
+
+  try {
+    const response = await fetch(`/api/announcement/${id}`, {
+      method: 'DELETE',
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.error || 'Failed to delete event');
+    }
+
+    alert('✅ Announcement deleted successfully!');
+    // router.push('/events');     // Redirect after delete
+    // router.refresh();
+    setLoading(false)
+  } catch (err: any) {
+    setEventFormError(err.message);
+  } finally {
+    setLoading(false);
+  }
+};
 
 
   // Event form states
@@ -444,6 +530,35 @@ const [eventId, setEventId]= useState('')
     }
   };
 
+
+    // Add this function
+const deleteEvent = async (id:string) => {
+  if (!confirm('Are you sure you want to delete this event?')) return;
+
+  setLoading(true);
+  // setEventFormError(null);
+
+  try {
+    const response = await fetch(`/api/event/${id}`, {
+      method: 'DELETE',
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.error || 'Failed to delete event');
+    }
+
+    alert('✅ Event deleted successfully!');
+    // router.push('/events');     // Redirect after delete
+    // router.refresh();
+    setLoading(false)
+  } catch (err: any) {
+    setEventFormError(err.message);
+  } finally {
+    setLoading(false);
+  }
+};
   // Active Admin Sub-tab
   const [adminTab, setAdminTab] = useState('blogs'); // 'blogs', 'announcements'
 
@@ -1512,14 +1627,32 @@ const handleDeleteAnnouncement = (id:any) => {
                     </div>
 
                     {/* Broadcast Action */}
-                    <button 
+                    {annEditing?(
+                      <>
+                    <button
+                          type="button"                    // ← Important: not submit
+                          onClick={handleAnnouncementUpdate}      // ← Fixed
+                          disabled={loading}
+                          className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-xl text-sm transition duration-150 flex items-center justify-center gap-2 shadow-xs disabled:opacity-70"
+                        >
+                          <Plus className="h-4 w-4" />
+                          {loading ? 'Updating...' : 'Update Announcement'}
+                        </button>
+                    
+                    </>):(
+                      <>
+                       <button 
                       type="submit"
                       className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-xl text-sm transition duration-150 flex items-center justify-center gap-2 shadow-xs"
                     >
                       <Plus className="h-4 w-4" />
                       {loading ? 'Submitting...' : 'Deploy Live Broadcast'}
                   
-                    </button>
+                    </button>                   
+                      
+                      
+                      </>)}
+
 
                   </form>
                 </div>
@@ -1569,10 +1702,18 @@ const handleDeleteAnnouncement = (id:any) => {
                             >
                               {ann.active ? 'Active' : 'Disabled'}
                             </button>
+
+                                   {/* Edit Button */}
+                            <button 
+                              onClick={() => handleAnnouncementEdit(ann.id)}
+                              className="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition"
+                            >
+                              <Edit2 className="h-4.5 w-4.5" />
+                            </button>
                             
                             {/* Delete Button */}
                             <button 
-                              onClick={() => handleDeleteAnnouncement(ann.id)}
+                              onClick={() => deleteAnnouncement(ann.id)}
                               className="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition"
                             >
                               <Trash2 className="h-4.5 w-4.5" />
@@ -1797,7 +1938,7 @@ const handleDeleteAnnouncement = (id:any) => {
                             
                             {/* Delete Button */}
                             <button 
-                              onClick={() => handleDeleteAnnouncement(ann.id)}
+                              onClick={() => deleteEvent(ann.id)}
                               className="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition"
                             >
                               <Trash2 className="h-4.5 w-4.5" />
