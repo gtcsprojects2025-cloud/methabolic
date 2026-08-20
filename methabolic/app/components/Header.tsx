@@ -25,7 +25,7 @@ const [isStemOpen, setIsStemOpen] = useState(false);
 
     const dismissed = localStorage.getItem("eventAlertDismissed_2026");
     if (!dismissed) {
-      setShowAlert(true);
+      setShowAlert(false); // Set to false initially, then show after 1 second
     } else {
       setShowAlert(false);
     }
